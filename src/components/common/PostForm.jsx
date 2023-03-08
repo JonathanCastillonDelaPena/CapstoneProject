@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PostDataService from "../../dataServices/postDataService";
+import MediaUploadWidget from "./MediaUploadWidget";
 
 const PostForm = ({ user_id }) => {
   let initialPostData = {
@@ -58,6 +59,7 @@ const PostForm = ({ user_id }) => {
             <button type="submit" className="btn btn-success mt-2">
               Post!
             </button>
+            <MediaUploadWidget />
           </form>
         </div>
       </div>
