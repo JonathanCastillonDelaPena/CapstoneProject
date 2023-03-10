@@ -8,16 +8,27 @@ const PostForm = ({ user_id }) => {
     user_id: user_id,
     title: "",
     content: "",
+    image_file: "",
   };
   const [post, setPost] = useState(initialPostData);
+
+  // Include this states when using the ImageFileSelector component
   const [imagePreview] = useState({});
   const [, setImage] = useState({});
 
+  // Include this function when using the ImageFileSelector component
   const handleImage = (event) => {
-    if (event.target.files[0]) {
+    const imageFile = event.target.files[0];
+    if (imageFile) {
       setImage({
-        src: URL.createObjectURL(event.target.files[0]),
-        alt: event.target.files[0].name,
+        src: URL.createObjectURL(imageFile),
+        alt: imageFile.name,
+      });
+
+      // Change this setter depending on context
+      setPost({
+        ...post,
+        ["image_file"]: imageFile,
       });
     }
   };

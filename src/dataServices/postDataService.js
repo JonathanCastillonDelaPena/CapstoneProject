@@ -7,7 +7,11 @@ const getAll = () => {
 };
 
 const create = (data) => {
-  return serverURI.post(postBaseURL, data);
+  return serverURI.post(postBaseURL, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
 const PostDataService = { getAll, create };
