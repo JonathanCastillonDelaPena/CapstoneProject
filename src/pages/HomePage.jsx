@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Navbar from "../components/common/Navbar";
+import Navbar from "../components/layout/Navbar";
 import PostCard from "../components/common/PostCard";
 import PostForm from "../components/common/PostForm";
 import PostDataService from "../dataServices/postDataService";
-
+import PageHomeSideNav from "../components/layout/PageHomeSideNav";
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
@@ -32,11 +32,15 @@ const HomePage = () => {
   }
 
   return (
-    <div>
+    <div className="container-fluid">
       <Navbar />
-      <div>HomePage</div>
-      <PostForm user_id={2} />
-      {displayPosts}
+      <div className="d-flex">
+        <PageHomeSideNav />
+          <div>
+          <PostForm user_id={2} />
+          {displayPosts}
+          </div>
+        </div>
     </div>
   );
 };
