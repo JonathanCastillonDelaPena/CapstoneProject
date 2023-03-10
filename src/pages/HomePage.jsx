@@ -28,7 +28,9 @@ const HomePage = () => {
 
   let displayPosts = <></>;
   if (posts.length !== 0) {
-    displayPosts = posts.map((post) => <PostCard props={post} />);
+    displayPosts = posts.map((post) => (
+      <PostCard props={post} key={post.post_id} />
+    ));
   }
 
   return (

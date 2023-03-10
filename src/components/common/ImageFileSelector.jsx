@@ -26,7 +26,7 @@ const ImageFileSelector = (props) => {
 
   return (
     <div>
-      // img element for Image Preview
+      {/* img element for Image Preview */}
       <img src={image} alt="" className="w-25" />
       <input
         ref={inputFileRef}
