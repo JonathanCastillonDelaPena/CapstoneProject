@@ -11,10 +11,11 @@ const HomePage = () => {
   /**
    * Get all the posts from the database.
    */
-  const getPosts = () => {
-    PostDataService.getAll()
+  const getPosts = async () => {
+    await PostDataService.getAll()
       .then((response) => {
-        setPosts(response.data);
+       setPosts(response.data);
+       console.log(response.data)
       })
       .catch((err) => {
         console.log(`\nError retrieving posts from database.`);
@@ -22,13 +23,14 @@ const HomePage = () => {
       });
   };
 
-  useEffect(() => {
+  useEffect( () => {
     getPosts();
   }, []);
 
   let displayPosts = <></>;
   if (posts.length !== 0) {
     displayPosts = posts.map((post) => <PostCard props={post} />);
+    console.log(displayPosts)
   }
 
   return (
