@@ -5,6 +5,7 @@ import PostCard from "../components/common/PostCard";
 import PostForm from "../components/common/PostForm";
 import PostDataService from "../dataServices/postDataService";
 import PageHomeSideNav from "../components/layout/PageHomeSideNav";
+// import CardStory from "../components/common/cardStories";
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
@@ -32,11 +33,15 @@ const HomePage = () => {
   }
 
   return (
+
     <div className="container-fluid">
       <Navbar />
       <div className="d-flex">
+
         <PageHomeSideNav />
-          <div>
+
+          <div className="container p-5">
+          {/* <CardStory /> */}
           <PostForm user_id={2} />
           {displayPosts}
           </div>
