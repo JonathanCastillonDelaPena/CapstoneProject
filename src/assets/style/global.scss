@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+// Colors
+$primary-color: #B23850;
+$secondary-color: #3B8BEB;
+$third-color: #E7E3D4;
+$fourth-color:#C4DBF6;
+$fifth-color: #8590AA;
+$font-Color: #070706;
+$background-color: #FFFFFE;
+
+// Style E.A Font
+$font-style: 'Lato', sans-serif;
+// border
+
+
+// Sizes
+$font-size: 2rem;
+$menu-width: 250px;
+$nav-menu-transition-duration: 850ms;
+$nav-menu-active-transition-duration: 350ms;
+$nav-text-height: 60px;
+$nav-text-font-size: 18px;
+$nav-text-padding: 8px 0px 8px 16px;
+$nav-text-border-radius: 16px;
+$navbar-toggle-height: 80px;
+$logo-width: 200px;
+// CustomClassName
+
+.custom-text-primary {
+    color: $primary-color;
+}
+.custom-text-secondary {
+    color: $secondary-color;
+}
+.custom-text-third {
+    color: $third-color;
+}
+
+
+// custom Border
+.customBorder {
+    border: {
+      width: 1px;
+      style: solid;
+      color: black;
+    }
+    box-shadow: {
+      x: 1px;
+      y: 1px;
+      blur: 0;
+      spread: 0;
+      color: black;
+    }
+  }
+
+// custom Shadow
+.customShadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.logoImg {
+  width: $logo-width;
+}
+
+.customBgColor {
+    background-color: $background-color;
+    
+}
+
+.custom100vh {
+    height: 100vh;
+}
+
+.menu-bars {
+  font-size: $font-size;
+  background: none;
+}
+
+.nav-menu {
+  background-color: $background-color;
+  width: $menu-width;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: -80;
+  left: -100%;
+  transition: $nav-menu-transition-duration;
+  z-index: 50;
+}
+.customIconSize{
+    font-size: 30px; /* Set the desired font size */
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: $nav-menu-active-transition-duration;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: $nav-text-padding;
+  list-style: none;
+  height: $nav-text-height;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: $font-Color;
+  font-size: $nav-text-font-size;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0px 16px;
+  border-radius: $nav-text-border-radius;
+}
+
+.nav-text a:hover {
+  background-color: $secondary-color;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.navbar-toggle {
+  background-color: $primary-color;
+  width: 100%;
+  height: $navbar-toggle-height;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+span {
+  margin-left: 16px;
+}
+
+.pageLogInContainer {
+    background-image: url("https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+.containerLogIn {
+    height: 100vh;
+    /* min-width: 300px; */
+}
+.containerSignUp {
+     min-width: 300px;
+    /* height: 100vh;  */
+    background-color: $primary-color;
+}
+

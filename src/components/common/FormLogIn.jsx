@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const FormLogIn = () => {
     return (
     <div className="divForm border border-1 rounded-3 p-3 bg-light">
@@ -26,8 +26,11 @@ const FormLogIn = () => {
             <div className="mb-3 form-check">
                 <input type="checkbox" className="form-check-input" id="remember-me" name="remember-me" />
                 <label className="form-check-label" for="remember-me">Remember me</label>
+                
+                
             </div>
                 <button type="submit" className="btn btn-primary">Sign in</button>
+                <Link to="/home" className="btn btn-primary mx-1">Go to HomePage</Link>
         </form>
     </div>
     )
