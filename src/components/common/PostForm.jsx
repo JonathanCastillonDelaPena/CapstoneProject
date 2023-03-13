@@ -1,13 +1,37 @@
 import React, { useState } from "react";
 import PostDataService from "../../dataServices/postDataService";
+import ImageFileSelector from "./ImageFileSelector";
+// import MediaUploadWidget from "./MediaUploadWidget";
 
 const PostForm = ({ user_id }) => {
   let initialPostData = {
     user_id: user_id,
     title: "",
     content: "",
+    image_file: "",
   };
   const [post, setPost] = useState(initialPostData);
+
+  // Include this states when using the ImageFileSelector component
+  const [imagePreview] = useState({});
+  const [, setImage] = useState({});
+
+  // Include this function when using the ImageFileSelector component
+  const handleImage = (event) => {
+    const imageFile = event.target.files[0];
+    if (imageFile) {
+      setImage({
+        src: URL.createObjectURL(imageFile),
+        alt: imageFile.name,
+      });
+
+      // Change this setter depending on context
+      setPost({
+        ...post,
+        ["image_file"]: imageFile,
+      });
+    }
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -55,9 +79,14 @@ const PostForm = ({ user_id }) => {
               value={post.content}
               onChange={handleInputChange}
             />
+            <ImageFileSelector
+              imagePreview={handleImage}
+              image={imagePreview.image}
+            />
             <button type="submit" className="btn btn-success mt-2">
               Post!
             </button>
+            {/* <MediaUploadWidget /> */}
           </form>
         </div>
       </div>
