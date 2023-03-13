@@ -14,5 +14,9 @@ const create = (data) => {
   });
 };
 
-const PostDataService = { getAll, create };
+const remove = (data) => {
+  return serverURI.delete(postBaseURL, { data: data });
+};
+
+const PostDataService = { getAll, create, remove };
 export default PostDataService;
