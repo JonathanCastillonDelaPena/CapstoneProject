@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Navbar from "../components/layout/Navbar";
 import PostCard from "../components/common/PostCard";
 import PostForm from "../components/common/PostForm";
 import PostDataService from "../dataServices/postDataService";
-import PageHomeSideNav from "../components/layout/PageHomeSideNav";
+import NavBar from "../components/layout/Nav";
+import '../assets/style/global.scss'
 // import CardStory from "../components/common/cardStories";
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -34,18 +34,14 @@ const HomePage = () => {
 
   return (
 
-    <div className="container-fluid">
-      <Navbar />
-      <div className="d-flex">
-
-        <PageHomeSideNav />
-
+    <div className="customBgColor custom100vh">
+        <NavBar />
           <div className="container p-5">
-          {/* <CardStory /> */}
-          <PostForm user_id={2} />
-          {displayPosts}
+            {/* <CardStory /> */}
+            <PostForm user_id={2} />
+            {displayPosts}
           </div>
-        </div>
+
     </div>
   );
 };

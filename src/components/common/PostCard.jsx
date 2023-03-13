@@ -9,7 +9,6 @@ const PostCard = ({ props }) => {
             <div className="col-md-12 col-lg-10 col-xl-8">
               <div className="card">
                 <div className="card-body">
-
                   <div className="d-flex flex-start align-items-center">
                     {/* Profile Pic of User Post */}
                     <img
@@ -23,7 +22,8 @@ const PostCard = ({ props }) => {
                       <div>
                         {/* UserName of the Poster */}
                         {/* <h4 >{props.user_id}</h4> */}
-                        <h2 className="mb-1">{props.title}</h2>
+                        {/* {props.title} */}
+                        <h2 className="mb-1">Title</h2>
 
                         {/* Sample Date */}
                         <p className="text-muted small mb-0">
