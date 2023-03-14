@@ -2,6 +2,7 @@ import React from "react";
 import '../assets/style/pageLogin.css';
 import { Link } from "react-router-dom";
 import FormLogIn from "../components/common/formLogIn";
+
 const PageLogin = () => {
     return (
         <div className="pageLogInContainer d-lg-flex">
