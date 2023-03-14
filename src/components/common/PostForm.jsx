@@ -1,13 +1,37 @@
 import React, { useState } from "react";
 import PostDataService from "../../dataServices/postDataService";
-import '../../assets/style/reusable.css';
+import ImageFileSelector from "./ImageFileSelector";
+// import MediaUploadWidget from "./MediaUploadWidget";
+
 const PostForm = ({ user_id }) => {
   let initialPostData = {
     user_id: user_id,
     title: "",
     content: "",
+    image_file: "",
   };
   const [post, setPost] = useState(initialPostData);
+
+  // Include this states when using the ImageFileSelector component
+  const [imagePreview] = useState({});
+  const [, setImage] = useState({});
+
+  // Include this function when using the ImageFileSelector component
+  const handleImage = (event) => {
+    const imageFile = event.target.files[0];
+    if (imageFile) {
+      setImage({
+        src: URL.createObjectURL(imageFile),
+        alt: imageFile.name,
+      });
+
+      // Change this setter depending on context
+      setPost({
+        ...post,
+        ["image_file"]: imageFile,
+      });
+    }
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -30,18 +54,18 @@ const PostForm = ({ user_id }) => {
   };
 
   return (
-    <div className="card w-75 m-2">
+    <div className="card w-50 m-2">
       <div className="card-body">
         <div className="d-flex align-items-center mb-3">
           {/* SmallProfilePic Resuable CSS classname */}
-          <img src="https://images.pexels.com/photos/10957721/pexels-photo-10957721.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="primaryPicSample" className="smallPicProfile rounded-circle" />
+          {/* <img src="https://images.pexels.com/photos/10957721/pexels-photo-10957721.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="primaryPicSample" className="smallPicProfile rounded-circle" /> */}
           {/* {user_id} This is the user ID PROPS */}
           <h4 className="card-title">Jestoni Ceroma Sample Name</h4>
         </div>
         <div className="card-text">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-            {/* <input
+             <input
               required
               type="text"
               className="form-control mb-1"
@@ -60,25 +84,21 @@ const PostForm = ({ user_id }) => {
               name="content"
               value={post.content}
               onChange={handleInputChange}
-            /> */}
-              <textarea
-            required
-            className="form-control mb-2"
-            placeholder="What's on your mind?"
-            id="content"
-            name="content"
-            value={post.content}
-            onChange={handleInputChange}
-            rows="3"
-          ></textarea>
-            </div> 
-              <button type="submit" className="btn btn-success mt-2">
-                Post!
-              </button>
+            />
+            <ImageFileSelector
+              imagePreview={handleImage}
+              image={imagePreview.image}
+            />
+            <button type="submit" className="btn btn-success mt-2">
+              Post!
+            </button>
+            {/* <MediaUploadWidget /> */}
+            </div>
           </form>
         </div>
       </div>
     </div>
+    
   );
 };
 

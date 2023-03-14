@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../assets/style/global.scss';
 import { SideBarData } from './SideBar';
 import { Link } from 'react-router-dom';
@@ -8,9 +8,19 @@ function Nav() {
 
   const showSideBar = () => setSideBar(!sideBar);
 
+      useEffect(() => {
+        const handleWheel = () => {
+          setSideBar(false);
+        };
+        window.addEventListener("wheel", handleWheel);
+        return () => {
+          window.removeEventListener("wheel", handleWheel);
+        };
+      }, []);
+      
   return (
     <div>
-      <div className='d-flex flex-wrap align-items-center justify-content-center justify-content-md-between px-5 border-bottom'>
+      <div className='d-flex flex-wrap sticky-top align-items-center justify-content-center justify-content-md-between px-5 border-bottom '>
         <div className='d-flex align-items-center col-md-3 mb-2 mb-md-0'>
         {/* Logo and Button/Link of SideNav */}
           <Link to="#" className='menu-bars'>
@@ -36,7 +46,7 @@ function Nav() {
         </div>
       </div>
 
-        {/* sidebar Mapping */}
+        {/* sidebar Mapping with Toggler */}
           <div className={`nav-menu ${sideBar ? 'active' : ''} customShadow`}>
               <ul className='nav-menu-items'>
                 {SideBarData.map((item, index) => {
