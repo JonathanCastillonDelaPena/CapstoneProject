@@ -8,22 +8,22 @@ import PageHomeSideNav from "../components/layout/PageHomeSideNav";
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
-  /**
-   * Get all the posts from the database.
-   */
-  const getPosts = async () => {
-    await PostDataService.getAll()
-      .then((response) => {
-        setPosts(response.data);
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(`\nError retrieving posts from database.`);
-        console.log(err);
-      });
-  };
-
   useEffect(() => {
+    /**
+     * Get all the posts from the database.
+     */
+    const getPosts = async () => {
+      await PostDataService.getAll()
+        .then((response) => {
+          setPosts(response.data);
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(`\nError retrieving posts from database.`);
+          console.log(err);
+        });
+    };
+
     getPosts();
   }, []);
 
