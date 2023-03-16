@@ -8,7 +8,10 @@ import PageHomeSideNav from "../components/layout/PageHomeSideNav";
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
-  /**
+  
+
+  useEffect(() => {
+    /**
    * Get all the posts from the database.
    */
   const getPosts = async () => {
@@ -22,8 +25,6 @@ const HomePage = () => {
         console.log(err);
       });
   };
-
-  useEffect(() => {
     getPosts();
   }, []);
 

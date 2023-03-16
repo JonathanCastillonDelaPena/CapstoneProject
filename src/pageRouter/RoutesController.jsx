@@ -7,6 +7,7 @@ import NotFoundWarningPage from "../pages/NotFoundWarningPage";
 import HomePage from "../pages/HomePage";
 import PageLogin from "../pages/PageLogin";
 import PageSignup from "../pages/PageSignUp";
+import Profile from "../pages/Profile";
 
 const RoutesController = () => {
   return (
@@ -23,6 +24,7 @@ const RoutesController = () => {
         }
       />
       <Route path="/register" element={<PageSignup />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 };
