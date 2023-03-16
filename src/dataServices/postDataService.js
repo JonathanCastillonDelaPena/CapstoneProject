@@ -23,7 +23,12 @@ const create = async (data) => {
 };
 
 const remove = (data) => {
-  return serverURI.delete(postBaseURL, { data: data });
+  return serverURI.delete(postBaseURL, {
+    data: data,
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
 };
 
 const PostDataService = { getAll, create, remove };
