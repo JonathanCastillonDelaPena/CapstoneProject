@@ -35,6 +35,11 @@ const PostCard = ({ props }) => {
           Delete Post
         </button>
       </div>
+
+      
+
+
+
     </div>
   );
 };

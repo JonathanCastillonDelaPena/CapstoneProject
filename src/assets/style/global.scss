@@ -1,43 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 // Colors
-$primary-color: #1985A1;
-$secondary-color: #b3001b;
-$font-Color: #ffffff;
-$font-Color-DarkBG: #1985A1;
-$background-defaultcolor: #ffffff;
-$background-color: #191308;
-$background-SecondColor: #dcdcdd;
+$primary-color: #F44E3F;
+$secondary-color: #f7f1f2;
+
+// background color
+$background-defaultcolor: #FFFFFC;
+$bg-Color-Dark: #0c0c0c;
+$background-SecondColor: #eeeeee;
+
+// font color
+$font-Color: #000000;
+$font-Color-DarkBG: #f8f6f6;
 
 // Style E.A Font
 $font-style: 'Lato', sans-serif;
 $font-weight300: 300;
 $font-weight400: 400;
 $font-weight700: 700;
+
 // Sizes Nav
 $font-size: 1.5rem;
 $menu-width: 230px;
-$nav-menu-transition-duration: 850ms;
-$nav-menu-active-transition-duration: 350ms;
-$nav-text-height: 40px;
-$nav-text-font-size: 15px;
-$nav-text-padding: 0px;
-$nav-text-border-radius: 8px;
-$navbar-toggle-height: 80px;
 $logo-width: 170px;
 $profile-pic-mini: 90px;
+
+
+
 //MainBody
 .mainBody{
   background-color: $background-SecondColor;
   font-style: $font-style;
 }
+// PortForm
+.smallMiniProfilePic {
+  height: 50px;
+  width: 50px;
+}
 
-// CustomClassName
-.custom-text-primary {
-    color: $primary-color;
+
+
+//Nav
+.navbar {
+  background-color: $background-defaultcolor;
+  height: 7vh;
+  color: $font-Color-DarkBG;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-.custom-text-secondary {
-    color: $secondary-color;
-}
+// Nav Btn
+    .navbar .btn {
+      color: $font-Color;
+      // background-color: $primary-color;
+      height: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .navbar .btn:hover {
+      color: $font-Color-DarkBG;
+      background-color: #F44E3F;
+      font-weight: 700;
+    }
+// PlaceHolder Search Box
+    // .input-group {
+    //   border: 0.2px solid #3e6b8a;
+    // }
+    // .input-group .form-control::placeholder {
+    //   color: #6c757d;
+    //   opacity: 1; /* Firefox */
+    // }
 
 // custom Border
 .customBorder {
@@ -76,85 +105,8 @@ h5{
 }
 
 //BACKGROUND
-.customBgColor {
-    background-color: $background-color;
-}
 .custom100vh {
     height: 100vh;
-}
-
-//NAVIGATION
-.menu-bars {
-  font-size: $font-size;
-  background: none;
-}
-.main-nav-menu {
-  background-color: $background-color;
-  color: $secondary-color;
-}
-.customIcon{
-    font-size: 25px; /* Set the desired font size */
-    color: $font-Color;
-}
-.customIcon:hover{
-  transition: 300ms;
-  font-size: 28px; /* Set the desired font size */
-  color: $secondary-color;
-}
-
-.nav-menu.active {
-  left: 0;
-  transition: $nav-menu-active-transition-duration;
-}
-.nav-text {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding: $nav-text-padding;
-  list-style: none;
-  height: $nav-text-height;
-}
-.nav-menu-items {
-  width: 100%;
-}
-.navbar-toggle {
-  background-color: $primary-color;
-  width: 100%;
-  height: $navbar-toggle-height;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-span {
-  margin-left: 16px;
-}
-
-//sideNavBar
-.nav-menu {
-  background-color: $background-SecondColor;
-  width: $menu-width;
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: -80;
-  left: -100%;
-  transition: $nav-menu-transition-duration;
-  z-index: 50;
-}
-.nav-text a {
-  text-decoration: none;
-  color: $background-color;
-  font-size: $nav-text-font-size;
-  width: 95%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0px 16px;
-  border-radius: $nav-text-border-radius;
-}
-.nav-text a:hover {
-  background-color: $primary-color;
 }
 
 //LOGIN PAGE
