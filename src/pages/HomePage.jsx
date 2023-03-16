@@ -1,11 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
+
+// import Component
 import PostCard from "../components/common/PostCard";
 import PostForm from "../components/common/PostForm";
 import PostDataService from "../dataServices/postDataService";
 import Nav from "../components/layout/Nav";
 import '../assets/style/global.scss'
+import CardProfileMini from "../components/common/CardProfileMini";
 // import CardStory from "../components/common/cardStories";
+
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
@@ -36,13 +40,19 @@ const HomePage = () => {
   }
 
   return (
-    <div className="container-fluid">
+    <div className="mainBody">
       <Nav />
-      <div className="d-flex flex-column justify-content-center align-items-center">
-        
+      <div className="d-md-flex mt-4">
+        <div className="LeftContent d-flex flex-column align-items-center" style={{flexBasis: '50%', maxWidth: '50%'}}>
+            <CardProfileMini />
+        </div>
+        <div className="MainContent" style={{flexBasis: '100%', maxWidth: '100%'}}>
           <PostForm user_id={2} />
           {displayPosts}
-       
+        </div>
+        <div className="RightContent" style={{flexBasis: '70%', maxWidth: '70%'}}>
+          <h1>Chat</h1>
+        </div>
       </div>
     </div>
   );

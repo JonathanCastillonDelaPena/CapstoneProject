@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+.mainBody {
+  background-color: #dcdcdd;
+  font-style: "Lato", sans-serif;
+}
+
+.custom-text-primary {
+  color: #1985A1;
+}
+
+.custom-text-secondary {
+  color: #b3001b;
+}
+
+.customBorder {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  box-shadow-x: 1px;
+  box-shadow-y: 1px;
+  box-shadow-blur: 0;
+  box-shadow-spread: 0;
+  box-shadow-color: black;
+}
+
+.customShadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.mini-profile-pic {
+  width: 90px;
+}
+
+.miniProfile {
+  width: 16rem;
+  font-weight: 700;
+}
+
+.logoImg {
+  width: 170px;
+}
+
+h5 {
+  font-weight: 700;
+}
+
+.customBgColor {
+  background-color: #191308;
+}
+
+.custom100vh {
+  height: 100vh;
+}
+
+.menu-bars {
+  font-size: 1.5rem;
+  background: none;
+}
+
+.main-nav-menu {
+  background-color: #191308;
+  color: #b3001b;
+}
+
+.customIcon {
+  font-size: 25px; /* Set the desired font size */
+  color: #ffffff;
+}
+
+.customIcon:hover {
+  transition: 300ms;
+  font-size: 28px; /* Set the desired font size */
+  color: #b3001b;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0px;
+  list-style: none;
+  height: 40px;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.navbar-toggle {
+  background-color: #1985A1;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+span {
+  margin-left: 16px;
+}
+
+.nav-menu {
+  background-color: #dcdcdd;
+  width: 230px;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: -80;
+  left: -100%;
+  transition: 850ms;
+  z-index: 50;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: #191308;
+  font-size: 15px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0px 16px;
+  border-radius: 8px;
+}
+
+.nav-text a:hover {
+  background-color: #1985A1;
+}
+
+.pageLogInContainer {
+  background-image: url("https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+.containerLogIn {
+  height: 100vh;
+  /* min-width: 300px; */
+}
+
+.containerSignUp {
+  min-width: 300px;
+  /* height: 100vh;  */
+  background-color: #1985A1;
+}/*# sourceMappingURL=global.css.map */

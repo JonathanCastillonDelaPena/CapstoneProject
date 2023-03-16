@@ -54,7 +54,7 @@ const PostForm = ({ user_id }) => {
   };
 
   return (
-    <div className="card w-50 m-2">
+    <div className="card m-2">
       <div className="card-body">
         <div className="d-flex align-items-center mb-3">
           {/* SmallProfilePic Resuable CSS classname */}

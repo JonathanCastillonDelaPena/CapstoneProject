@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 // Colors
-$primary-color: #B23850;
-$secondary-color: #3B8BEB;
-$third-color: #E7E3D4;
-$fourth-color:#C4DBF6;
-$fifth-color: #8590AA;
-$font-Color: #070706;
-$background-color: #FFFFFE;
+$primary-color: #1985A1;
+$secondary-color: #b3001b;
+$font-Color: #ffffff;
+$font-Color-DarkBG: #1985A1;
+$background-defaultcolor: #ffffff;
+$background-color: #191308;
+$background-SecondColor: #dcdcdd;
 
 // Style E.A Font
 $font-style: 'Lato', sans-serif;
-// border
-
-
+$font-weight300: 300;
+$font-weight400: 400;
+$font-weight700: 700;
 // Sizes Nav
 $font-size: 1.5rem;
 $menu-width: 230px;
@@ -24,63 +24,114 @@ $nav-text-padding: 0px;
 $nav-text-border-radius: 8px;
 $navbar-toggle-height: 80px;
 $logo-width: 170px;
-// CustomClassName
+$profile-pic-mini: 90px;
+//MainBody
+.mainBody{
+  background-color: $background-SecondColor;
+  font-style: $font-style;
+}
 
+// CustomClassName
 .custom-text-primary {
     color: $primary-color;
 }
 .custom-text-secondary {
     color: $secondary-color;
 }
-.custom-text-third {
-    color: $third-color;
-}
 
-.customSideNavMini {
-    height: 100%;
-    width: 5%;
-}
 // custom Border
 .customBorder {
-    border: {
-      width: 1px;
-      style: solid;
-      color: black;
-    }
-    box-shadow: {
-      x: 1px;
-      y: 1px;
-      blur: 0;
-      spread: 0;
-      color: black;
-    }
+  border: {
+    width: 1px;
+    style: solid;
+    color: black;
   }
+  box-shadow: {
+    x: 1px;
+    y: 1px;
+    blur: 0;
+    spread: 0;
+    color: black;
+  }
+}
 
 // custom Shadow
 .customShadow {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+//MINI PROFILE
+.mini-profile-pic {
+  width: $profile-pic-mini;
+}
+.miniProfile {
+  width: 16rem;
+  font-weight: $font-weight700;
+ }
 .logoImg {
   width: $logo-width;
 }
-
-.customBgColor {
-    background-color: $background-color;
-    
+h5{
+  font-weight: $font-weight700;
 }
 
+//BACKGROUND
+.customBgColor {
+    background-color: $background-color;
+}
 .custom100vh {
     height: 100vh;
 }
 
+//NAVIGATION
 .menu-bars {
   font-size: $font-size;
   background: none;
 }
-
-.nav-menu {
+.main-nav-menu {
   background-color: $background-color;
+  color: $secondary-color;
+}
+.customIcon{
+    font-size: 25px; /* Set the desired font size */
+    color: $font-Color;
+}
+.customIcon:hover{
+  transition: 300ms;
+  font-size: 28px; /* Set the desired font size */
+  color: $secondary-color;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: $nav-menu-active-transition-duration;
+}
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: $nav-text-padding;
+  list-style: none;
+  height: $nav-text-height;
+}
+.nav-menu-items {
+  width: 100%;
+}
+.navbar-toggle {
+  background-color: $primary-color;
+  width: 100%;
+  height: $navbar-toggle-height;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+span {
+  margin-left: 16px;
+}
+
+//sideNavBar
+.nav-menu {
+  background-color: $background-SecondColor;
   width: $menu-width;
   height: 90vh;
   display: flex;
@@ -91,27 +142,9 @@ $logo-width: 170px;
   transition: $nav-menu-transition-duration;
   z-index: 50;
 }
-.customIconSize{
-    font-size: 30px; /* Set the desired font size */
-}
-
-.nav-menu.active {
-  left: 0;
-  transition: $nav-menu-active-transition-duration;
-}
-
-.nav-text {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding: $nav-text-padding;
-  list-style: none;
-  height: $nav-text-height;
-}
-
 .nav-text a {
   text-decoration: none;
-  color: $font-Color;
+  color: $background-color;
   font-size: $nav-text-font-size;
   width: 95%;
   height: 100%;
@@ -120,32 +153,14 @@ $logo-width: 170px;
   padding: 0px 16px;
   border-radius: $nav-text-border-radius;
 }
-
 .nav-text a:hover {
   background-color: $primary-color;
 }
 
-.nav-menu-items {
-  width: 100%;
-}
-
-.navbar-toggle {
-  background-color: $primary-color;
-  width: 100%;
-  height: $navbar-toggle-height;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-
-span {
-  margin-left: 16px;
-}
-
+//LOGIN PAGE
 .pageLogInContainer {
     background-image: url("https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 }
-
 .containerLogIn {
     height: 100vh;
     /* min-width: 300px; */
