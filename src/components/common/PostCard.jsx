@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import PostDataService from "../../dataServices/postDataService";
+import CommentSection from "../comment/CommentSection";
 
 const PostCard = ({ props }) => {
-  const handleRemovePost = (post_id, image_public_id) => {
-    PostDataService.remove({
-      post_id: post_id,
-      image_public_id: image_public_id,
-    })
-      .then((response) => {
-        console.log(response);
-        alert(`Your Post was deleted!`);
-      })
-      .catch((err) => {
-        console.log(`\nError deleting the post in the database.`);
-        console.log(err);
-      });
+  const [isCommentBoxHidden, setIsCommentBoxHidden] = useState(false);
+  // const handleRemovePost = (post_id, image_public_id) => {
+  //   PostDataService.remove({
+  //     post_id: post_id,
+  //     image_public_id: image_public_id,
+  //   })
+  //     .then((response) => {
+  //       console.log(response);
+  //       alert(`Your Post was deleted!`);
+  //     })
+  //     .catch((err) => {
+  //       console.log(`\nError deleting the post in the database.`);
+  //       console.log(err);
+  //     });
+  // };
+
+  const handleShowCommentBox = () => {
+    setIsCommentBoxHidden((previous) => !previous);
   };
 
   return (
@@ -28,12 +34,18 @@ const PostCard = ({ props }) => {
         </div>
       </div>
       <div className="card-footer">
-        <button
+        {/* <button
           className="btn btn-danger"
           onClick={() => handleRemovePost(props.post_id, props.image_public_id)}
         >
           Delete Post
-        </button>
+        </button> */}
+        <div className="d-flex justify-content-center">
+          <button type="button" onClick={handleShowCommentBox}>
+            Comment
+          </button>
+        </div>
+        {isCommentBoxHidden && <CommentSection key={props.user_id} />}
       </div>
     </div>
   );
