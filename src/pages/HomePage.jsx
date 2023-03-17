@@ -35,7 +35,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid" >
       <Navbar />
       <div className="d-flex">
         <PageHomeSideNav />
