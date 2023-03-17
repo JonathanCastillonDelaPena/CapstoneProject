@@ -43,7 +43,7 @@ const HomePage = () => {
   return (
     <div className="mainBody">
       <Nav />
-      <div className="d-md-flex mt-4">
+      <div className="d-md-flex mt-5 pt-3">
         <div className="LeftContent d-flex flex-column align-items-center" style={{flexBasis: '50%', maxWidth: '50%'}}>
             <CardProfileMini />
         </div>

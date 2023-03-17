@@ -25,11 +25,9 @@ const ImageFileSelector = (props) => {
   };
 
   return (
-    <div className="container m-2 d-flex flex-column justify-content-center align-items-center border border-1 rounded">
+    <div className="container d-flex flex-column justify-content-center align-items-center">
       {/* img element for Image Preview */}
-
-      <img src={image} alt="" className="w-50 m-2" />
-
+      <img src={image} alt="" className="w-50" />
       <input
         ref={inputFileRef}
         accept="image/*"
@@ -39,7 +37,7 @@ const ImageFileSelector = (props) => {
         onChange={handleOnChange}
       />
       <label htmlFor="imageFileSelector">
-        <span className="btn border-1">
+        <span className="btn">
           <i class="bi bi-camera-fill me-2"></i>
           {image ? "Change Image" : "Select Image"}
         </span>

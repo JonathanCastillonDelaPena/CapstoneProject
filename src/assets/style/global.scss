@@ -1,29 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
-// Colors
-$primary-color: #F44E3F;
-$secondary-color: #f7f1f2;
-
-// background color
-$background-defaultcolor: #FFFFFC;
-$bg-Color-Dark: #0c0c0c;
-$background-SecondColor: #eeeeee;
-
-// font color
-$font-Color: #000000;
-$font-Color-DarkBG: #f8f6f6;
-
-// Style E.A Font
-$font-style: 'Lato', sans-serif;
-$font-weight300: 300;
-$font-weight400: 400;
-$font-weight700: 700;
-
-// Sizes Nav
-$font-size: 1.5rem;
-$menu-width: 230px;
-$logo-width: 170px;
-$profile-pic-mini: 90px;
-
+@import './components/colors';
+@import './components/buttons';
+@import './components/fonts';
+@import './components/images';
+@import './components//nav';
+@import './components//icons';
 
 
 //MainBody
@@ -36,29 +17,9 @@ $profile-pic-mini: 90px;
   height: 50px;
   width: 50px;
 }
-
-
-
 //Nav
-.navbar {
-  background-color: $background-defaultcolor;
-  height: 7vh;
-  color: $font-Color-DarkBG;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-// Nav Btn
-    .navbar .btn {
-      color: $font-Color;
-      // background-color: $primary-color;
-      height: 30px;
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-    .navbar .btn:hover {
-      color: $font-Color-DarkBG;
-      background-color: #F44E3F;
-      font-weight: 700;
-    }
+
+
 // PlaceHolder Search Box
     // .input-group {
     //   border: 0.2px solid #3e6b8a;
@@ -90,16 +51,12 @@ $profile-pic-mini: 90px;
 }
 
 //MINI PROFILE
-.mini-profile-pic {
-  width: $profile-pic-mini;
-}
+
 .miniProfile {
   width: 16rem;
   font-weight: $font-weight700;
  }
-.logoImg {
-  width: $logo-width;
-}
+
 h5{
   font-weight: $font-weight700;
 }
