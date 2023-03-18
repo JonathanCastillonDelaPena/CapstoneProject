@@ -4,6 +4,8 @@ import { SideBarData } from './SideBar';
 import { Link } from 'react-router-dom';
 import { useSignOut } from 'react-auth-kit'
 function Nav() {
+  
+  const signOut = useSignOut()
   return (
     <header className='header fixed-top'>
       <div className='navbar navbar-expand-lg px-5'>
@@ -59,7 +61,7 @@ function Nav() {
                   </Link>
                 </li>
             </ul>
-            <Link className='btn-link'>
+            <Link className='btn-link' onClick={() => signOut()} to='/login'>
               <i class="bi bi-box-arrow-left"></i>
             </Link>
     

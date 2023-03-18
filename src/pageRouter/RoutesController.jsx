@@ -15,8 +15,7 @@ const RoutesController = () => {
       <Route index element={<PageLogin />} />
       <Route path="*" element={<NotFoundWarningPage />} />
       <Route path="/login" element={<PageLogin />} />
-      <Route
-        path="/home"
+      <Route path="/home"
         element={
           <RequireAuth loginPath={"/login"}>
             <HomePage />
