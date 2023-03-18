@@ -41,10 +41,28 @@ const getReplyComment = async (data) => {
   });
 };
 
+const createParentComment = async (data) => {
+  return await serverURI.post(commentBaseURL + "parent", data, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+const createReplyComment = async (data) => {
+  return await serverURI.post(commentBaseURL + "reply", data, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 const CommentDataService = {
   getCommentCount,
   getReplyCommentCount,
   getParentComment,
   getReplyComment,
+  createParentComment,
+  createReplyComment,
 };
 export default CommentDataService;

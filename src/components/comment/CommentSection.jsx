@@ -10,7 +10,7 @@ const CommentSection = ({ post_id }) => {
     await CommentDataService.getParentComment({ post_id: post_id })
       .then((response) => {
         setParentComment(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(`\nError retrieving parent comment from database.`);

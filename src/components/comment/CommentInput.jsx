@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CommentInput = () => {
+const CommentInput = ({props}) => {
   const [comment, setComment] = useState("");
 
   const handleInputChange = (event) => {

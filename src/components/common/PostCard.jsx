@@ -29,7 +29,7 @@ const PostCard = ({ props }) => {
       .then((response) => {
         let countArray = response.data;
         setCommentCount(countArray[0].comment_count);
-        console.log(countArray);
+        // console.log(countArray);
       })
       .catch((err) => {
         console.log(

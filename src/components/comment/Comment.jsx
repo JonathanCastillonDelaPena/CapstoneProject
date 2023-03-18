@@ -9,7 +9,7 @@ const Comment = ({ props }) => {
         style={{ width: 50, marginRight: 10 }}
       />
       <section>
-        <h5 className="m-0">User {props.user_id}</h5>
+        <h5 className="m-0">{props.first_name} {props.last_name}</h5>
         <p className="m-0">{props.comment}</p>
       </section>
     </div>

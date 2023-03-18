@@ -17,7 +17,7 @@ const CommentContainer = ({ props }) => {
     await CommentDataService.getReplyComment({post_id: props.post_id, parent_comment_id: props.comment_id})
       .then((response) => {
         setReplyComment(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(`\nError retrieving reply comment from database.`);
@@ -30,7 +30,7 @@ const CommentContainer = ({ props }) => {
       .then((response) => {
         let countArray = response.data;
         setReplyCommentCount(countArray[0].comment_count);
-        console.log(countArray);
+        // console.log(countArray);
       })
       .catch((err) => {
         console.log(
