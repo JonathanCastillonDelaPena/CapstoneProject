@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { RequireAuth } from 'react-auth-kit'
+import { RequireAuth } from "react-auth-kit";
 
 // Pages
 import NotFoundWarningPage from "../pages/NotFoundWarningPage";
@@ -14,11 +14,14 @@ const RoutesController = () => {
       <Route index element={<PageLogin />} />
       <Route path="*" element={<NotFoundWarningPage />} />
       <Route path="/login" element={<PageLogin />} />
-      <Route path="/home" element={
-        <RequireAuth loginPath={'/login'}>
-          <HomePage />
-        </RequireAuth>
-      } />
+      <Route
+        path="/home"
+        element={
+          <RequireAuth loginPath={"/login"}>
+            <HomePage />
+          </RequireAuth>
+        }
+      />
       <Route path="/register" element={<PageSignup />} />
     </Routes>
   );
