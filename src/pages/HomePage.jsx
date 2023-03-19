@@ -8,6 +8,17 @@ import PageHomeSideNav from "../components/layout/PageHomeSideNav";
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
+  // The data of the current user.
+  // This is just temporary and should be changed
+  // to be dynamic.
+  // Note: this user data must be in your local database.
+  // Note: this data is only partial.
+  const currentUser = {
+    user_id: 14,
+    first_name: "Long",
+    last_name: "Takun"
+  }
+
   useEffect(() => {
     const getPosts = async () => {
       await PostDataService.getAll()
@@ -27,7 +38,7 @@ const HomePage = () => {
   let displayPosts = <></>;
   if (posts.length !== 0) {
     displayPosts = posts.map((post) => (
-      <PostCard props={post} key={post.post_id} />
+      <PostCard props={{post: post, currentUser: currentUser}} key={post.post_id} />
     ));
   }
 
@@ -37,7 +48,7 @@ const HomePage = () => {
       <div className="d-flex">
         <PageHomeSideNav />
         <div>
-          <PostForm user_id={2} />
+          <PostForm props={{...currentUser, setPosts}} />
           {displayPosts}
         </div>
       </div>

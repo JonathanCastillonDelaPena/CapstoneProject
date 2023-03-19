@@ -3,13 +3,13 @@ import CommentInput from "./CommentInput";
 import CommentContainer from "./CommentContainer";
 import CommentDataService from "../../dataServices/commentDataService";
 
-const CommentSection = ({ post_id }) => {
-  const [parentComment, setParentComment] = useState([]);
+const CommentSection = ({ props }) => {
+  const [parentComments, setParentComments] = useState([]);
 
   const getParentComment = async () => {
-    await CommentDataService.getParentComment({ post_id: post_id })
+    await CommentDataService.getParentComment({ post_id: props.post.post_id })
       .then((response) => {
-        setParentComment(response.data);
+        setParentComments(response.data);
         // console.log(response.data);
       })
       .catch((err) => {
@@ -20,11 +20,11 @@ const CommentSection = ({ post_id }) => {
 
   return (
     <div className="d-flex flex-column" onLoad={getParentComment}>
-      {parentComment.map((comment) => (
-        <CommentContainer key={comment.comment_id} props={comment} />
+      {parentComments.map((parentComment) => (
+        <CommentContainer key={parentComment.comment_id} props={{...props, parentComment: parentComment, getParentComment}} />
       ))}
 
-      <CommentInput />
+      <CommentInput props={{...props, parentComment: {}, getParentComment}}/>
     </div>
   );
 };

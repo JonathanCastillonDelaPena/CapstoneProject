@@ -3,14 +3,15 @@ import PostDataService from "../../dataServices/postDataService";
 import ImageFileSelector from "./ImageFileSelector";
 // import MediaUploadWidget from "./MediaUploadWidget";
 
-const PostForm = ({ user_id }) => {
+const PostForm = ({ props }) => {
   let initialPostData = {
-    user_id: user_id,
+    user_id: props.user_id,
     title: "",
     content: "",
     image_file: "",
   };
   const [post, setPost] = useState(initialPostData);
+  const [isPostSubmitted, setIsPostSubmitted] = useState(false);
 
   // Include this states when using the ImageFileSelector component
   const [imagePreview] = useState({});
@@ -20,11 +21,12 @@ const PostForm = ({ user_id }) => {
   const handleImage = (event) => {
     const imageFile = event.target.files[0];
     if (imageFile) {
-      setImage({
-        src: URL.createObjectURL(imageFile),
-        alt: imageFile.name,
-      });
 
+        setImage({
+          src: URL.createObjectURL(imageFile),
+          alt: imageFile.name,
+        });
+      
       // Change this setter depending on context
       setPost({
         ...post,
@@ -38,6 +40,18 @@ const PostForm = ({ user_id }) => {
     setPost({ ...post, [name]: value });
   };
 
+  const getPosts = async () => {
+    await PostDataService.getAll()
+      .then((response) => {
+        props.setPosts(response.data);
+        // console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(`\nError retrieving posts from database.`);
+        console.log(err);
+      });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -45,7 +59,12 @@ const PostForm = ({ user_id }) => {
       .then((response) => {
         console.log(response);
         alert(`Your Post was shared!`);
+
+        // Clear the Post form.
         setPost(initialPostData);
+        setImage({});
+        setIsPostSubmitted(true);
+        getPosts();
       })
       .catch((err) => {
         console.log(`\nError adding a post to the database.`);
@@ -56,7 +75,9 @@ const PostForm = ({ user_id }) => {
   return (
     <div className="card w-75 m-2">
       <div className="card-body">
-        <h4 className="card-title">{user_id}</h4>
+        <h4 className="card-title">
+          {props.first_name} {props.last_name}
+        </h4>
         <div className="card-text">
           <form onSubmit={handleSubmit}>
             <input
@@ -81,6 +102,7 @@ const PostForm = ({ user_id }) => {
             />
             <ImageFileSelector
               imagePreview={handleImage}
+              postState={{isPostSubmitted, setIsPostSubmitted}}
               image={imagePreview.image}
             />
             <button type="submit" className="btn btn-success mt-2">

@@ -25,7 +25,7 @@ const PostCard = ({ props }) => {
   };
 
   const getCommentCount = async () => {
-    await CommentDataService.getCommentCount({ post_id: props.post_id })
+    await CommentDataService.getCommentCount({ post_id: props.post.post_id })
       .then((response) => {
         let countArray = response.data;
         setCommentCount(countArray[0].comment_count);
@@ -41,18 +41,18 @@ const PostCard = ({ props }) => {
 
   return (
     <div className="card w-50 m-2" onLoad={getCommentCount}>
-      <img src={props.image_url} alt="" className="card-img-top" />
+      <img src={props.post.image_url} alt="" className="card-img-top" />
       <div className="card-body">
-        <h4 className="card-title">{props.user_id}</h4>
-        <h2 className="card-title">{props.title}</h2>
+        <h4 className="card-title">{props.post.user_id}</h4>
+        <h2 className="card-title">{props.post.title}</h2>
         <div className="card-text">
-          <p>{props.content}</p>
+          <p>{props.post.content}</p>
         </div>
       </div>
       <div className="card-footer">
         {/* <button
           className="btn btn-danger"
-          onClick={() => handleRemovePost(props.post_id, props.image_public_id)}
+          onClick={() => handleRemovePost(props.post.post_id, props.post.image_public_id)}
         >
           Delete Post
         </button> */}
@@ -62,7 +62,7 @@ const PostCard = ({ props }) => {
           </button>
         </div>
         {isCommentBoxHidden && (
-          <CommentSection key={props.post_id} post_id={props.post_id} />
+          <CommentSection key={props.post.post_id} props={{...props, getCommentCount}} />
         )}
       </div>
     </div>

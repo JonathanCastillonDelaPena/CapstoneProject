@@ -14,7 +14,7 @@ const CommentContainer = ({ props }) => {
   };
 
   const getReplyComment = async () => {
-    await CommentDataService.getReplyComment({post_id: props.post_id, parent_comment_id: props.comment_id})
+    await CommentDataService.getReplyComment({post_id: props.post.post_id, parent_comment_id: props.parentComment.comment_id})
       .then((response) => {
         setReplyComment(response.data);
         // console.log(response.data);
@@ -26,7 +26,7 @@ const CommentContainer = ({ props }) => {
   };
 
   const getReplyCommentCount = async () => {
-    await CommentDataService.getReplyCommentCount({post_id: props.post_id, parent_comment_id: props.comment_id})
+    await CommentDataService.getReplyCommentCount({post_id: props.post.post_id, parent_comment_id: props.parentComment.comment_id})
       .then((response) => {
         let countArray = response.data;
         setReplyCommentCount(countArray[0].comment_count);
@@ -47,7 +47,7 @@ const CommentContainer = ({ props }) => {
           {replyComment.map((comment) => (
             <Comment key={comment.comment_id} props={comment} />
           ))}
-          <CommentInput />
+          <CommentInput props={{...props, getReplyCommentCount, getReplyComment}}/>
         </li>
       </div>
     );
@@ -55,7 +55,7 @@ const CommentContainer = ({ props }) => {
 
   return (
     <div onLoad={getReplyCommentCount}>
-      <Comment props={props} />
+      <Comment props={props.parentComment} />
       <div className="comment-options">
         <button type="button" onClick={handleReplyBox}>
           Reply {replyCommentCount === 0 ? "" : replyCommentCount}

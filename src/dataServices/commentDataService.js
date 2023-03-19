@@ -57,6 +57,15 @@ const createReplyComment = async (data) => {
   });
 };
 
+const removeComment = (data) => {
+  return serverURI.delete(commentBaseURL, {
+    data: data,
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 const CommentDataService = {
   getCommentCount,
   getReplyCommentCount,
@@ -64,5 +73,6 @@ const CommentDataService = {
   getReplyComment,
   createParentComment,
   createReplyComment,
+  removeComment,
 };
 export default CommentDataService;
