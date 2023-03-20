@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import useLoadPosts from "../components/customHooks/useLoadPosts";
 
 // import Component
 import PostCard from "../components/common/PostCard";
@@ -12,6 +13,9 @@ import CardProfileMini from "../components/common/CardProfileMini";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
+
+  const [pageNumber, setPageNumber] = useState(1);
+  useLoadPosts(pageNumber);
 
   // The data of the current user.
   // This is just temporary and should be changed

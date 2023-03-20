@@ -13,6 +13,16 @@ const getAll = async () => {
   });
 };
 
+const getAllPaginated = async (pageNumber, cancel) => {
+  return await serverURI.get(postBaseURL, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+    params: pageNumber,
+    cancelToken: cancel,
+  });
+};
+
 const create = async (data) => {
   return await serverURI.post(postBaseURL, data, {
     headers: {
@@ -31,5 +41,5 @@ const remove = (data) => {
   });
 };
 
-const PostDataService = { getAll, create, remove };
+const PostDataService = { getAll, getAllPaginated, create, remove };
 export default PostDataService;
