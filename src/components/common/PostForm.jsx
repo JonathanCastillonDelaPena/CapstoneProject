@@ -4,14 +4,15 @@ import ImageFileSelector from "./ImageFileSelector";
 import '../../assets/style/global.css'
 // import MediaUploadWidget from "./MediaUploadWidget";
 
-const PostForm = ({ user_id }) => {
+const PostForm = ({ props }) => {
   let initialPostData = {
-    user_id: user_id,
+    user_id: props.user_id,
     title: "",
     content: "",
     image_file: "",
   };
   const [post, setPost] = useState(initialPostData);
+  const [isPostSubmitted, setIsPostSubmitted] = useState(false);
 
   // Include this states when using the ImageFileSelector component
   const [imagePreview] = useState({});
@@ -21,11 +22,12 @@ const PostForm = ({ user_id }) => {
   const handleImage = (event) => {
     const imageFile = event.target.files[0];
     if (imageFile) {
-      setImage({
-        src: URL.createObjectURL(imageFile),
-        alt: imageFile.name,
-      });
 
+        setImage({
+          src: URL.createObjectURL(imageFile),
+          alt: imageFile.name,
+        });
+      
       // Change this setter depending on context
       setPost({
         ...post,
@@ -39,6 +41,18 @@ const PostForm = ({ user_id }) => {
     setPost({ ...post, [name]: value });
   };
 
+  const getPosts = async () => {
+    await PostDataService.getAll()
+      .then((response) => {
+        props.setPosts(response.data);
+        // console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(`\nError retrieving posts from database.`);
+        console.log(err);
+      });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -46,7 +60,12 @@ const PostForm = ({ user_id }) => {
       .then((response) => {
         console.log(response);
         alert(`Your Post was shared!`);
+
+        // Clear the Post form.
         setPost(initialPostData);
+        setImage({});
+        setIsPostSubmitted(true);
+        getPosts();
       })
       .catch((err) => {
         console.log(`\nError adding a post to the database.`);
@@ -61,7 +80,7 @@ const PostForm = ({ user_id }) => {
           {/* SmallProfilePic Resuable CSS classname */}
           <img src="https://images.pexels.com/photos/10957721/pexels-photo-10957721.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="primaryPicSample" className="smallMiniProfilePic rounded-circle" />
           {/* {user_id} This is the user ID PROPS */}
-          <span className="font-small-size mb-4 ms-2 font700">Jestoni Ceroma</span>
+          <span className="font-small-size mb-4 ms-2 font700">{props.first_name} {props.last_name}</span>
         </div>
         <div className="card-text">
           <form onSubmit={handleSubmit}>
@@ -81,6 +100,7 @@ const PostForm = ({ user_id }) => {
               
             <ImageFileSelector
                 imagePreview={handleImage}
+                postState={{isPostSubmitted, setIsPostSubmitted}}
                 image={imagePreview.image}
               />
               <textarea

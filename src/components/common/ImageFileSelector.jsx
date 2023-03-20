@@ -1,4 +1,4 @@
-import React, { createRef, useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 
 const ImageFileSelector = (props) => {
   const [image, _setImage] = useState();
@@ -23,6 +23,14 @@ const ImageFileSelector = (props) => {
     }
     props.imagePreview(event);
   };
+
+  useEffect(() => {
+    if (props.postState.isPostSubmitted) {
+      cleanUp();
+      _setImage();
+      props.postState.setIsPostSubmitted(false);
+    }
+  }, [props.postState.isPostSubmitted]);
 
   return (
     <div className="container d-flex flex-column justify-content-center align-items-center">
