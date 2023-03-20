@@ -1,0 +1,27 @@
+// Style E.A Font
+$font-style: 'Lato', sans-serif;
+$font-weight300: 300;
+$font-weight400: 400;
+$font-weight700: 700;
+
+//Nav
+$font-size: 1.5rem;
+$font-extrasmallsize: 0.6rem;
+$font-smallsize: 1.2rem;
+
+.font-extra-small-size {
+    font-size: $font-extrasmallsize;
+}
+
+.font-small-size {
+ font-size: $font-smallsize;
+}
+.font300 {
+    font-weight: $font-weight300;;
+}
+.font400 {
+    font-weight: $font-weight400;;
+}
+.font700 {
+    font-weight: $font-weight700;;
+}

@@ -42,7 +42,6 @@ const FormLogIn = () => {
           if (err && err instanceof AxiosError)
             setError(err.response?.data.message);
           else if (err && err instanceof Error) setError(err.message);
-    
           console.log("Error: ", err);
         }
       };
@@ -83,7 +82,6 @@ const FormLogIn = () => {
                 <label className="form-check-label" for="remember-me">Remember me</label>
             </div> */}
                 <button type="submit" className="btn btn-primary">Sign in</button>
-                <Link to="/home" className="btn btn-primary mx-1">Go to HomePage</Link>
         </form>
     </div>
     )

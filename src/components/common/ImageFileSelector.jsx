@@ -33,9 +33,9 @@ const ImageFileSelector = (props) => {
   }, [props.postState.isPostSubmitted]);
 
   return (
-    <div>
+    <div className="container d-flex flex-column justify-content-center align-items-center">
       {/* img element for Image Preview */}
-      <img src={image} alt="" className="w-25" />
+      <img src={image} alt="" className="w-50" />
       <input
         ref={inputFileRef}
         accept="image/*"
@@ -45,10 +45,12 @@ const ImageFileSelector = (props) => {
         onChange={handleOnChange}
       />
       <label htmlFor="imageFileSelector">
-        <span className="btn btn-primary">
+        <span className="btn">
+          <i class="bi bi-camera-fill me-2"></i>
           {image ? "Change Image" : "Select Image"}
         </span>
       </label>
+    
     </div>
   );
 };

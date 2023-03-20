@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PostDataService from "../../dataServices/postDataService";
 import ImageFileSelector from "./ImageFileSelector";
+import '../../assets/style/global.css'
 // import MediaUploadWidget from "./MediaUploadWidget";
 
 const PostForm = ({ props }) => {
@@ -73,14 +74,18 @@ const PostForm = ({ props }) => {
   };
 
   return (
-    <div className="card w-75 m-2">
+    <div className="card m-2">
       <div className="card-body">
-        <h4 className="card-title">
-          {props.first_name} {props.last_name}
-        </h4>
+        <div className="d-flex align-items-center mb-3">
+          {/* SmallProfilePic Resuable CSS classname */}
+          <img src="https://images.pexels.com/photos/10957721/pexels-photo-10957721.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="primaryPicSample" className="smallMiniProfilePic rounded-circle" />
+          {/* {user_id} This is the user ID PROPS */}
+          <span className="font-small-size mb-4 ms-2 font700">{props.first_name} {props.last_name}</span>
+        </div>
         <div className="card-text">
           <form onSubmit={handleSubmit}>
-            <input
+            <div className="form-group">
+             {/* <input
               required
               type="text"
               className="form-control mb-1"
@@ -89,30 +94,39 @@ const PostForm = ({ props }) => {
               name="title"
               value={post.title}
               onChange={handleInputChange}
-            />
-            <input
-              required
-              type="text"
-              className="form-control"
-              placeholder="Post what's on your mind."
-              id="content"
-              name="content"
-              value={post.content}
-              onChange={handleInputChange}
-            />
+            /> */}
+{/* TextArea */}
+            <div className="form-group">
+              
             <ImageFileSelector
-              imagePreview={handleImage}
-              postState={{isPostSubmitted, setIsPostSubmitted}}
-              image={imagePreview.image}
-            />
-            <button type="submit" className="btn btn-success mt-2">
+                imagePreview={handleImage}
+                postState={{isPostSubmitted, setIsPostSubmitted}}
+                image={imagePreview.image}
+              />
+              <textarea
+                required
+                className="form-control"
+                placeholder="Post what's on your mind."
+                id="content"
+                name="content"
+                value={post.content}
+                onChange={handleInputChange}
+              ></textarea>
+            </div>
+{/* ImageSelector */}
+            <div className="container d-flex align-items-center mt-1">
+              
+            <button type="submit" className="btn btn-success ms-auto">
               Post!
             </button>
+            </div>
             {/* <MediaUploadWidget /> */}
+            </div>
           </form>
         </div>
       </div>
     </div>
+    
   );
 };
 

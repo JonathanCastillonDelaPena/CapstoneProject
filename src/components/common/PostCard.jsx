@@ -40,7 +40,7 @@ const PostCard = ({ props }) => {
   };
 
   return (
-    <div className="card w-50 m-2" onLoad={getCommentCount}>
+    <div className="card m-2" onLoad={getCommentCount}>
       <img src={props.post.image_url} alt="" className="card-img-top" />
       <div className="card-body">
         <h4 className="card-title">{props.post.user_id}</h4>
@@ -68,5 +68,6 @@ const PostCard = ({ props }) => {
     </div>
   );
 };
+
 
 export default PostCard;
