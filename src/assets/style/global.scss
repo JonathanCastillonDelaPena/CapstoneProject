@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import './components/colors';
+@import './components/buttons';
+@import './components/fonts';
+@import './components/images';
+@import './components//nav';
+@import './components//icons';
+
+
+//MainBody
+.mainBody{
+  background-color: $background-SecondColor;
+  font-style: $font-style;
+}
+// PortForm
+.smallMiniProfilePic {
+  height: 50px;
+  width: 50px;
+}
+//Nav
+
+
+// PlaceHolder Search Box
+    // .input-group {
+    //   border: 0.2px solid #3e6b8a;
+    // }
+    // .input-group .form-control::placeholder {
+    //   color: #6c757d;
+    //   opacity: 1; /* Firefox */
+    // }
+
+// custom Border
+.customBorder {
+  border: {
+    width: 1px;
+    style: solid;
+    color: black;
+  }
+  box-shadow: {
+    x: 1px;
+    y: 1px;
+    blur: 0;
+    spread: 0;
+    color: black;
+  }
+}
+
+// custom Shadow
+.customShadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+//MINI PROFILE
+
+.miniProfile {
+  width: 16rem;
+  font-weight: $font-weight700;
+ }
+
+h5{
+  font-weight: $font-weight700;
+}
+
+//BACKGROUND
+.custom100vh {
+    height: 100vh;
+}
+
+//LOGIN PAGE
+.pageLogInContainer {
+    background-image: url("https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+.containerLogIn {
+    height: 100vh;
+    /* min-width: 300px; */
+}
+.containerSignUp {
+     min-width: 300px;
+    /* height: 100vh;  */
+    background-color: $primary-color;
+}
+

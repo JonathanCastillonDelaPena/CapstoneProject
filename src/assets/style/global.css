@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+.mainBody {
+  background-color: #eeeeee;
+  font-style: "Lato", sans-serif;
+}
+
+.smallMiniProfilePic {
+  height: 50px;
+  width: 50px;
+}
+
+.navbar {
+  background-color: #FFFFFC;
+  height: 7vh;
+  color: #f8f6f6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .btn {
+  color: #000000;
+  height: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.navbar .btn:hover {
+  color: #f8f6f6;
+  background-color: #F44E3F;
+  font-weight: 700;
+}
+
+.customBorder {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  box-shadow-x: 1px;
+  box-shadow-y: 1px;
+  box-shadow-blur: 0;
+  box-shadow-spread: 0;
+  box-shadow-color: black;
+}
+
+.customShadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.mini-profile-pic {
+  width: 90px;
+}
+
+.miniProfile {
+  width: 16rem;
+  font-weight: 700;
+}
+
+.logoImg {
+  width: 170px;
+}
+
+h5 {
+  font-weight: 700;
+}
+
+.custom100vh {
+  height: 100vh;
+}
+
+.pageLogInContainer {
+  background-image: url("https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+.containerLogIn {
+  height: 100vh;
+  /* min-width: 300px; */
+}
+
+.containerSignUp {
+  min-width: 300px;
+  /* height: 100vh;  */
+  background-color: #F44E3F;
+}/*# sourceMappingURL=global.css.map */

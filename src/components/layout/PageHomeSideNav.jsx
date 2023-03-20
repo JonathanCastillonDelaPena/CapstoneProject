@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import '../../assets/style/sideNavBar.css'
+import { useSignOut } from 'react-auth-kit'
+
 const PageHomeSideNav = () => {
+    const signOut = useSignOut()
     return (
                 <nav id="sidebarMenu" className="collapse d-lg-block">
                     <div className="position-sticky">
@@ -12,6 +15,7 @@ const PageHomeSideNav = () => {
                                 <li className="list-group-item">Videos</li>
                                 <li className="list-group-item">Popular Post</li>
                                 <li className="list-group-item">Blog</li>
+                                <li className="list-group-item" onClick={() => signOut()}>Logout</li>
                             </ul>
                         </div>
                     </div>
