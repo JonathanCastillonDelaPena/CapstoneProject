@@ -57,9 +57,7 @@ const PostForm = ({ user_id }) => {
   return (
     <div className="card m-2">
       <div className="card-body">
-      
         <div className="d-flex align-items-center mb-3">
-        
           {/* SmallProfilePic Resuable CSS classname */}
           <img src="https://images.pexels.com/photos/10957721/pexels-photo-10957721.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="primaryPicSample" className="smallMiniProfilePic rounded-circle" />
           {/* {user_id} This is the user ID PROPS */}

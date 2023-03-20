@@ -19,23 +19,34 @@ function Nav() {
     {/* MENU */}
           <div className='collapse navbar-collapse bg-light w-25' id='navbarSupportedContent'>
             <ul className='navbar-nav mx-auto mb-1 mb-lg-0'>
-              {/* Home */}
+             
+            </ul>
+{/* UL Another List */}
+            <ul className='navbar-nav mE-auto mb-1 mb-lg-0'>
+                {/* Home */}
                 <li>
                   <Link className='btn-link' to='/Home'>
                   <i class="bi bi-large bi-house-door-fill"></i>
                     {/* <span className='mx-2'>HOME</span> */}
                   </Link>
                 </li>
-                {/* Profile */}
+                {/* Profile*/}
                 <li>
                   <Link className='btn-link' to='/Home'>
-                  <i class="bi bi-person-square position-relative">
-                    <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-danger font-extra-small-size">
+                    {/* Or ProfilePic circle Mini */}
+                  <i class="bi bi-person-circle"></i>
+                    {/* <span className='mx-2'>HOME</span> */}
+                  </Link>
+                </li>
+               {/* FRIEND REQ */}
+               <li>
+                  <Link className='btn-link' to='/Home'>
+                    <i class="bi bi-person-fill-add  position-relative">
+                    <span class="position-absolute top-100 start-0 translate-middle badge rounded-pill bg-danger font-extra-small-size">
                       99+
                       <span class="visually-hidden">unread messages</span>
                     </span>
                   </i>
-    
                   </Link>
                 </li>
                 {/* Messages */}
@@ -60,15 +71,16 @@ function Nav() {
                   </i>
                   </Link>
                 </li>
+              <li>
+            {/* LOGOUT */}
+                <Link className='btn-link' onClick={() => signOut()} to='/login'>
+                  <i class="bi bi-box-arrow-left"></i>
+                </Link>
+              </li>
             </ul>
-            <Link className='btn-link' onClick={() => signOut()} to='/login'>
-              <i class="bi bi-box-arrow-left"></i>
-            </Link>
-    
-          
+            
           </div>
         </nav>
-
       </div>
     </header> 
          
