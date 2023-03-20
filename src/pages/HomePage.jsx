@@ -23,20 +23,20 @@ const HomePage = () => {
     first_name: "Long",
     last_name: "Takun"
   }
+  
+  const getPosts = async () => {
+    await PostDataService.getAll()
+      .then((response) => {
+        setPosts(response.data);
+        // console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(`\nError retrieving posts from database.`);
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
-    const getPosts = async () => {
-      await PostDataService.getAll()
-        .then((response) => {
-          setPosts(response.data);
-          // console.log(response.data);
-        })
-        .catch((err) => {
-          console.log(`\nError retrieving posts from database.`);
-          console.log(err);
-        });
-    };
-
     getPosts();
   }, []);
 
