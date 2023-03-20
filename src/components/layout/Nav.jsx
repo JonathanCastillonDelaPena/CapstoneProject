@@ -32,7 +32,7 @@ function Nav() {
                 </li>
                 {/* Profile*/}
                 <li>
-                  <Link className='btn-link' to='/Home'>
+                  <Link className='btn-link' to='/profile'>
                     {/* Or ProfilePic circle Mini */}
                   <i class="bi bi-person-circle"></i>
                     {/* <span className='mx-2'>HOME</span> */}

@@ -78,24 +78,31 @@ const CommentInput = ({ props }) => {
   };
 
   return (
-    <div className="row mt-2">
+    <div className="d-flex pt-3 mt-2 px-2">
       <img
-        className="col-2"
+        className="rounded-circle smallMiniProfilePic mx-2 mt-1"
         src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600"
         alt="..."
       />
       <form
         onSubmit={(event) => handleCommentSubmit(event, props)}
-        className="col-9 m-0 p-0"
+        className='form-outline w-100 mb-2 me-2'
       >
         <input
           required
-          className="col-12"
+          className="form-control flex-fill rounded5"
           type="text"
           value={comment}
           onChange={handleInputChange}
-          placeholder="Write a comment."
+          placeholder={!Object.entries(props.parentComment).length ? "Write a comment.": "Write a reply." }
         />
+        {/* <textarea
+                required
+                className="form-control shadow-none textarea flex-fill"
+                placeholder="Write a comment"
+                value={comment}
+                onChange={handleInputChange}
+        ></textarea> */}
       </form>
     </div>
   );

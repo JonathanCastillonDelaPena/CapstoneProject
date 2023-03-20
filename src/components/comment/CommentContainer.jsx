@@ -55,10 +55,12 @@ const CommentContainer = ({ props }) => {
 
   return (
     <div onLoad={getReplyCommentCount}>
+      
       <Comment props={props.parentComment} />
-      <div className="comment-options">
-        <button type="button" onClick={handleReplyBox}>
-          Reply {replyCommentCount === 0 ? "" : replyCommentCount}
+      
+      <div className="comment-options ms-5">
+        <button className="btn font700 font-small-size ms-1 btn-style-Link" type="button" onClick={handleReplyBox}>
+          Replies {replyCommentCount === 0 ? "" : replyCommentCount}
         </button>
       </div>
       {isReplyBoxHidden && showCommentReplies()}

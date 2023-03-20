@@ -7,8 +7,8 @@ $font-weight700: 700;
 //Nav
 $font-size: 1.5rem;
 $font-extrasmallsize: 0.6rem;
-$font-smallsize: 1.2rem;
-
+$font-smallsize: 0.9rem;
+$font-medsize: 1.7rem;
 .font-extra-small-size {
     font-size: $font-extrasmallsize;
 }
@@ -16,6 +16,10 @@ $font-smallsize: 1.2rem;
 .font-small-size {
  font-size: $font-smallsize;
 }
+.font-medium-size {
+    font-size: $font-medsize;
+   }
+
 .font300 {
     font-weight: $font-weight300;;
 }
