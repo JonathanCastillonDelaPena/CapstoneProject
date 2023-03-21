@@ -119,7 +119,7 @@ function Nav() {
                 </div>
             </li>
             <li className="nav-item">
-              <Link className='btn-link w-100' onClick={() => signOut()} to='/login'>
+              <Link className='btn-link w-100' onClick={() => signOut()} to='/'>
                   <i className="bi-large bi bi-color bi-box-arrow-left"></i>
                   <span className='mx-2 mt-1'>Sign Out</span>
               </Link>
