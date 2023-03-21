@@ -50,7 +50,20 @@ const ImageFileSelector = (props) => {
           {image ? "Change Image" : "Select Image"}
         </span>
       </label>
-    
+      {image ? (
+        <span
+          className="btn"
+          onClick={() => {
+            setImage();
+            props.postState.setImage();
+          }}
+        >
+          <i class="me-2"></i>
+          Remove Image
+        </span>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

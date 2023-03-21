@@ -65,7 +65,7 @@ const PostForm = ({ props }) => {
         setPost(initialPostData);
         setImage({});
         setIsPostSubmitted(true);
-        getPosts();
+        props.setSubmittedPost(true);
       })
       .catch((err) => {
         console.log(`\nError adding a post to the database.`);
@@ -100,7 +100,7 @@ const PostForm = ({ props }) => {
               
             <ImageFileSelector
                 imagePreview={handleImage}
-                postState={{isPostSubmitted, setIsPostSubmitted}}
+                postState={{isPostSubmitted, setIsPostSubmitted, setImage}}
                 image={imagePreview.image}
               />
               <textarea

@@ -13,12 +13,25 @@ const getAll = async () => {
   });
 };
 
-const getAllPaginated = async (pageNumber, cancel) => {
-  return await serverURI.get(postBaseURL, {
+const getLatest = async () => {
+  const token = cookies.get("_auth", true);
+  return await serverURI.get(postBaseURL + "latest", {
     headers: {
       authorization: `Bearer ${token}`,
     },
-    params: pageNumber,
+  });
+};
+
+const getAllPaginated = async (_limit, _lastFetchedRecord, cancel) => {
+  const token = cookies.get("_auth", true);
+  return await serverURI.get(postBaseURL + "paginated", {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+    params: {
+      limit: _limit,
+      last_fetched_record: _lastFetchedRecord,
+    },
     cancelToken: cancel,
   });
 };
@@ -43,5 +56,5 @@ const remove = (data) => {
   });
 };
 
-const PostDataService = { getAll, getAllPaginated, create, remove };
+const PostDataService = { getAll, getLatest, getAllPaginated, create, remove };
 export default PostDataService;

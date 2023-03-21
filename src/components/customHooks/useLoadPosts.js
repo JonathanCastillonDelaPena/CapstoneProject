@@ -2,32 +2,36 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import PostDataService from "../../dataServices/postDataService";
 
-const useLoadPosts = (pageNumber) => {
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    const [posts, setPosts] = useState([]);
-    const [hasMore, setHasMore] = useState(false);
+export default function useLoadPosts(limit, lastFetchedRecord) {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [_posts, setPosts] = useState([]);
+  const [hasMore, setHasMore] = useState(false);
 
-  useEffect(async () => {
+  useEffect(() => {
     setLoading(true);
     setError(false);
     let cancel;
 
-    await PostDataService.getAllPaginated(
-      pageNumber,
+    PostDataService.getAllPaginated(
+      limit,
+      lastFetchedRecord,
       new axios.CancelToken((c) => (cancel = c))
     )
       .then((response) => {
-        setPosts(response.data);
+        setPosts((prevPosts) => {
+          return [...prevPosts, ...response.data]
+        });
+        setHasMore(response.data.length > 0);
+        setLoading(false);
       })
       .catch((error) => {
         if (axios.isCancel(error)) return;
+        setError(true);
       });
 
     return () => cancel();
-  }, [pageNumber]);
+  }, [lastFetchedRecord]);
 
-  return null;
-};
-
-export default useLoadPosts;
+  return { loading, error, _posts, hasMore, setPosts };
+}
