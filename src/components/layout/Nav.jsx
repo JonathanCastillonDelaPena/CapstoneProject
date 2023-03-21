@@ -128,8 +128,7 @@ function Nav() {
         </div>
       </div>
 
-    {/* Modal */}
-   <ModalPost />
+  
 
     </nav>
   )

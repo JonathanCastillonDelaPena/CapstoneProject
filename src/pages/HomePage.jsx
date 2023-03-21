@@ -10,6 +10,7 @@ import Nav from "../components/layout/Nav";
 import "../assets/style/global.scss";
 import CardProfileMini from "../components/common/CardProfileMini";
 import Footer from "../components/layout/Footer";
+import ModalPost from "../components/layout/ModalPost";
 // import CardStory from "../components/common/cardStories";
 
 const HomePage = () => {
@@ -114,7 +115,9 @@ const HomePage = () => {
   return (
     <div>
       <Nav />
-      
+    {/* Modal */}
+   <ModalPost props={{ ...currentUser, setSubmittedPost }} />
+
       <div className="d-md-flex pt-3 bg-lightCustom mt-5">
         <div className="LeftContent d-flex flex-column align-items-center" style={{flexBasis: '50%', maxWidth: '50%'}}>
             <CardProfileMini />

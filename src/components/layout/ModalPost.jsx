@@ -1,27 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import PostForm from '../common/PostForm';
-import PostCard from '../common/PostCard';
 import PostDataService from '../../dataServices/postDataService';
-import ImageFileSelector from '../common/ImageFileSelector';
+import ImageFileSelectorModal from '../common/ImageFileSelectorModal';
 import '../../assets/style/global.css';
-function ModalPost() {
-    const [posts, setPosts] = useState([]);
 
-  // The data of the current user.
-  // This is just temporary and should be changed
-  // to be dynamic.
-  // Note: this user data must be in your local database.
-  // Note: this data is only partial.
-  const currentUser = {
-    user_id: 14,
-    first_name: "Long",
-    last_name: "Takun"
-  }
-  
+
+const ModalPost = ({ props }) => {
+
+  let initialPostData = {
+    user_id: props.user_id,
+    title: "",
+    content: "",
+    image_file: "",
+  };
+  const [post, setPost] = useState(initialPostData);
+  const [isPostSubmitted, setIsPostSubmitted] = useState(false);
+
+  // Include this states when using the ImageFileSelectorModal component
+  const [imagePreview] = useState({});
+  const [, setImage] = useState({});
+
+  // Include this function when using the ImageFileSelectorModal component
+  const handleImage = (event) => {
+    const imageFile = event.target.files[0];
+    if (imageFile) {
+
+        setImage({
+          src: URL.createObjectURL(imageFile),
+          alt: imageFile.name,
+        });
+      
+      // Change this setter depending on context
+      setPost({
+        ...post,
+        ["image_file"]: imageFile,
+      });
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPost({ ...post, [name]: value });
+  };
+
   const getPosts = async () => {
     await PostDataService.getAll()
       .then((response) => {
-        setPosts(response.data);
+        props.setPosts(response.data);
         // console.log(response.data);
       })
       .catch((err) => {
@@ -30,35 +54,28 @@ function ModalPost() {
       });
   };
 
-  useEffect(() => {
-    getPosts();
-  }, []);
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  let displayPosts = <></>;
-  if (posts.length !== 0) {
-    displayPosts = posts.map((post) => (
-      <PostCard props={{post: post, currentUser: currentUser}} key={post.post_id} />
-    ));
-  }
+    PostDataService.create(post)
+      .then((response) => {
+        console.log(response);
+        alert(`Your Post was shared!`);
+
+        // Clear the Post form.
+        setPost(initialPostData);
+        setImage({});
+        setIsPostSubmitted(true);
+        props.setSubmittedPost(true);
+      })
+      .catch((err) => {
+        console.log(`\nError adding a post to the database.`);
+        console.log(err);
+      });
+  };
+ 
   return (
-    // <div classNameName ="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    //     <div classNameName ="modal-dialog">
-    //         <div classNameName ="modal-content">
-    //         <div classNameName ="modal-header">
-    //             <h1 classNameName ="modal-title fs-5" id="exampleModalLabel">Create Post</h1>
-    //             <button type="button" classNameName ="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    //         </div>
-    //         <div classNameName ="modal-body">
-                
-    //         </div>
-    //         <div classNameName ="modal-footer">
-    //             <button type="button" classNameName ="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-    //             <button type="button" classNameName ="btn btn-primary">Save changes</button>
-    //         </div>
-    //         </div>
-    //     </div>
-    // </div> 
-<div className="modal fade" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div className="modal fade" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
@@ -66,7 +83,57 @@ function ModalPost() {
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div className="modal-body">
-        <PostForm props={{...currentUser, setPosts}} />
+      <div className="d-flex align-items-center mb-3">
+          {/* SmallProfilePic Resuable CSS classname */}
+          <img src="https://images.pexels.com/photos/10957721/pexels-photo-10957721.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="primaryPicSample" className="smallMiniProfilePic rounded-circle" />
+          {/* {user_id} This is the user ID PROPS */}
+          <span className="font-small-size mb-4 ms-2 font700 font-Color-Black">{props.first_name} {props.last_name}</span>
+      </div>
+     {/* FORM POSTMODAL */}
+
+     <form onSubmit={handleSubmit}>
+            <div className="form-group">
+             {/* <input
+              required
+              type="text"
+              className="form-control mb-1"
+              placeholder="Your creative Post title..."
+              id="title"
+              name="title"
+              value={post.title}
+              onChange={handleInputChange}
+            /> */}
+{/* TextArea */}
+            <div className="form-group">
+              
+            <ImageFileSelectorModal
+                imagePreview={handleImage}
+                postState={{isPostSubmitted, setIsPostSubmitted, setImage}}
+                image={imagePreview.image}
+            />
+
+              <textarea
+                required
+                className="form-control"
+                placeholder="Post what's on your mind."
+                id="content"
+                name="content"
+                value={post.content}
+                onChange={handleInputChange}
+              ></textarea>
+            </div>
+{/* ImageSelector */}
+            <div className="container d-flex align-items-center mt-1">
+              
+            <button type="submit" className="btn btn-success ms-auto">
+              Post!
+            </button>
+            </div>
+            {/* <MediaUploadWidget /> */}
+            </div>
+          </form>
+
+
       </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -74,8 +141,7 @@ function ModalPost() {
     </div>
   </div>
 </div>
-    
   )
 }
 
-export default ModalPost
+export default ModalPost;

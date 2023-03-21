@@ -126,7 +126,6 @@ const PostForm = ({ props }) => {
         </div>
       </div>
     </div>
-    
   );
 };
 
