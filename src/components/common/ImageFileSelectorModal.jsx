@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
 
-const ImageFileSelector = (props) => {
+const ImageFileSelectorModal = (props) => {
   const [image, _setImage] = useState();
   const inputFileRef = createRef();
 
@@ -40,11 +40,11 @@ const ImageFileSelector = (props) => {
         ref={inputFileRef}
         accept="image/*"
         hidden
-        id="imageFileSelector"
+        id="imageFileSelector1"
         type="file"
         onChange={handleOnChange}
       />
-      <label htmlFor="imageFileSelector">
+      <label htmlFor="imageFileSelector1">
         <span className="btn">
           <i className="bi bi-camera-fill me-2"></i>
           {image ? "Change Image" : "Select Image"}
@@ -68,4 +68,4 @@ const ImageFileSelector = (props) => {
   );
 };
 
-export default ImageFileSelector;
+export default ImageFileSelectorModal;

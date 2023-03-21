@@ -1,9 +1,9 @@
 import React from "react";
-
+import Nav from "../components/layout/Nav";
 const NotFoundWarningPage = () => {
   return (
     <div>
-      <Navbar />
+      <Nav />
       <div>NotFoundWarningPage</div>
     </div>
   );
