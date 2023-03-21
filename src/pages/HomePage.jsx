@@ -9,6 +9,8 @@ import PostDataService from "../dataServices/postDataService";
 import Nav from "../components/layout/Nav";
 import "../assets/style/global.scss";
 import CardProfileMini from "../components/common/CardProfileMini";
+import Footer from "../components/layout/Footer";
+import ModalPost from "../components/layout/ModalPost";
 // import CardStory from "../components/common/cardStories";
 
 const HomePage = () => {
@@ -111,14 +113,14 @@ const HomePage = () => {
   }
 
   return (
-    <div className="mainBody">
+    <div>
       <Nav />
-      <div className="d-md-flex mt-5 pt-3">
-        <div
-          className="LeftContent d-flex flex-column align-items-center"
-          style={{ flexBasis: "50%", maxWidth: "50%" }}
-        >
-          <CardProfileMini />
+    {/* Modal */}
+   <ModalPost props={{ ...currentUser, setSubmittedPost }} />
+
+      <div className="d-md-flex pt-3 bg-lightCustom mt-5">
+        <div className="LeftContent d-flex flex-column align-items-center" style={{flexBasis: '50%', maxWidth: '50%'}}>
+            <CardProfileMini />
         </div>
         <div
           className="MainContent"
@@ -136,6 +138,7 @@ const HomePage = () => {
           <h1>Chat</h1>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

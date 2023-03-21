@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import PostDataService from "../../dataServices/postDataService";
-import ImageFileSelector from "./ImageFileSelector";
-import '../../assets/style/global.css'
-// import MediaUploadWidget from "./MediaUploadWidget";
+import React, { useState, useEffect } from 'react';
+import PostDataService from '../../dataServices/postDataService';
+import ImageFileSelectorModal from '../common/ImageFileSelectorModal';
+import '../../assets/style/global.css';
 
-const PostForm = ({ props }) => {
+
+const ModalPost = ({ props }) => {
+
   let initialPostData = {
     user_id: props.user_id,
     title: "",
@@ -14,11 +15,11 @@ const PostForm = ({ props }) => {
   const [post, setPost] = useState(initialPostData);
   const [isPostSubmitted, setIsPostSubmitted] = useState(false);
 
-  // Include this states when using the ImageFileSelector component
+  // Include this states when using the ImageFileSelectorModal component
   const [imagePreview] = useState({});
   const [, setImage] = useState({});
 
-  // Include this function when using the ImageFileSelector component
+  // Include this function when using the ImageFileSelectorModal component
   const handleImage = (event) => {
     const imageFile = event.target.files[0];
     if (imageFile) {
@@ -72,18 +73,25 @@ const PostForm = ({ props }) => {
         console.log(err);
       });
   };
-
+ 
   return (
-    <div className="card m-2">
-      <div className="card-body">
-        <div className="d-flex align-items-center mb-3">
+<div className="modal fade" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5 font700 font-Color-Black" id="staticBackdropLabel">Create post</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+      <div className="d-flex align-items-center mb-3">
           {/* SmallProfilePic Resuable CSS classname */}
           <img src="https://images.pexels.com/photos/10957721/pexels-photo-10957721.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="primaryPicSample" className="smallMiniProfilePic rounded-circle" />
           {/* {user_id} This is the user ID PROPS */}
           <span className="font-small-size mb-4 ms-2 font700 font-Color-Black">{props.first_name} {props.last_name}</span>
-        </div>
-        <div className="card-text">
-          <form onSubmit={handleSubmit}>
+      </div>
+     {/* FORM POSTMODAL */}
+
+     <form onSubmit={handleSubmit}>
             <div className="form-group">
              {/* <input
               required
@@ -98,11 +106,12 @@ const PostForm = ({ props }) => {
 {/* TextArea */}
             <div className="form-group">
               
-            <ImageFileSelector
+            <ImageFileSelectorModal
                 imagePreview={handleImage}
                 postState={{isPostSubmitted, setIsPostSubmitted, setImage}}
                 image={imagePreview.image}
-              />
+            />
+
               <textarea
                 required
                 className="form-control"
@@ -123,10 +132,16 @@ const PostForm = ({ props }) => {
             {/* <MediaUploadWidget /> */}
             </div>
           </form>
-        </div>
+
+
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
-  );
-};
+  </div>
+</div>
+  )
+}
 
-export default PostForm;
+export default ModalPost;

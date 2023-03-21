@@ -49,20 +49,33 @@ const PostCard = ({ props }) => {
       <div className="card-body">
         <h4 className="card-title">{props.post.user_id}</h4>
         <h2 className="card-title">{props.post.title}</h2>
+
         <div className="card-text">
           <p>{props.post.content}</p>
         </div>
+
+        <img src={props.post.image_url} alt="" className="card-img-top" />
+          {/* <div className="d-flex">
+            <div className="ms-auto mt-2">
+              <span className="font700">{commentCount}</span>
+              <i class="bi bi-chat-dots-fill font-small-size me-3 mx-1"></i>
+              </div>
+          </div> */}
       </div>
-      <div className="card-footer">
+      <div>
         {/* <button
           className="btn btn-danger"
           onClick={() => handleRemovePost(props.post.post_id, props.post.image_public_id)}
         >
           Delete Post
         </button> */}
-        <div className="d-flex justify-content-center">
-          <button type="button" onClick={handleShowCommentBox}>
-            Comment {commentCount}
+        <div className="d-flex justify-content-between border-top border-bottom p-2">
+          <button className="btn font700 btn-style-Link" type="button" onClick={handleShowCommentBox}>
+            Comment
+          </button>
+          <button className="btn font700 btn-style-Link" type="button" onClick={handleShowCommentBox}>
+              <span className="font700">{commentCount}</span>
+              <i className="bi bi-chat-dots-fill font-small-size me-3 mx-1"></i>
           </button>
         </div>
         {isCommentBoxHidden && (
@@ -72,6 +85,4 @@ const PostCard = ({ props }) => {
     </div>
   );
 };
-
-
 export default PostCard;

@@ -1,5 +1,5 @@
 import React from "react";
-import '../assets/style/pageLogin.css';
+import '../assets/style/global.css';
 import { Link } from "react-router-dom";
 import FormLogIn from "../components/common/formLogIn";
 
