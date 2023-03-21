@@ -53,6 +53,7 @@ const CommentInput = ({ props }) => {
       .then((response) => {
         alert(`Your Comment was shared!`);
         setComment("");
+        props?.getCommentCount();
         props?.getReplyCommentCount();
         props?.getReplyComment();
       })

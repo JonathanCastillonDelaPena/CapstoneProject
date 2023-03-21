@@ -12,18 +12,17 @@ import Profile from "../pages/Profile";
 const RoutesController = () => {
   return (
     <Routes>
-      <Route index element={<PageLogin />} />
-      <Route path="*" element={<NotFoundWarningPage />} />
-      <Route path="/login" element={<PageLogin />} />
+      <Route path="/" element={<PageLogin />} />
       <Route path="/home"
         element={
-          <RequireAuth loginPath={"/login"}>
+          <RequireAuth loginPath={"/"}>
             <HomePage />
           </RequireAuth>
         }
       />
       <Route path="/register" element={<PageSignup />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="*" element={<NotFoundWarningPage />} />
     </Routes>
   );
 };

@@ -73,7 +73,7 @@ function Nav() {
                 </li>
               <li>
             {/* LOGOUT */}
-                <Link className='btn-link' onClick={() => signOut()} to='/login'>
+                <Link className='btn-link' onClick={() => signOut()} to='/'>
                   <i class="bi bi-box-arrow-left"></i>
                 </Link>
               </li>
