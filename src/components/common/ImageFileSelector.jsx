@@ -46,7 +46,7 @@ const ImageFileSelector = (props) => {
       />
       <label htmlFor="imageFileSelector">
         <span className="btn">
-          <i class="bi bi-camera-fill me-2"></i>
+          <i className="bi bi-camera-fill me-2"></i>
           {image ? "Change Image" : "Select Image"}
         </span>
       </label>

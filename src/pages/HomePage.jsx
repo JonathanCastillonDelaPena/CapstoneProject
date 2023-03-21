@@ -8,7 +8,7 @@ import PostDataService from "../dataServices/postDataService";
 import Nav from "../components/layout/Nav";
 import '../assets/style/global.scss'
 import CardProfileMini from "../components/common/CardProfileMini";
-import Footer from "../components/layout/foooter";
+import Footer from "../components/layout/Footer";
 // import CardStory from "../components/common/cardStories";
 
 const HomePage = () => {
@@ -20,7 +20,7 @@ const HomePage = () => {
   // Note: this user data must be in your local database.
   // Note: this data is only partial.
   const currentUser = {
-    user_id: 28,
+    user_id: 14,
     first_name: "Long",
     last_name: "Takun"
   }
@@ -49,10 +49,10 @@ const HomePage = () => {
   }
 
   return (
-    <div className="mainBody">
+    <div>
       <Nav />
       
-      <div className="d-md-flex mt-5 pt-3">
+      <div className="d-md-flex pt-3 bg-lightCustom mt-5">
         <div className="LeftContent d-flex flex-column align-items-center" style={{flexBasis: '50%', maxWidth: '50%'}}>
             <CardProfileMini />
         </div>

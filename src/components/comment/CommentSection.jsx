@@ -20,11 +20,10 @@ const CommentSection = ({ props }) => {
 
   return (
     <div className="d-flex flex-column" onLoad={getParentComment}>
-      <CommentInput props={{...props, parentComment: {}, getParentComment}}/> 
-
+      <CommentInput props={{...props, parentComment: {}, getParentComment}}/>
         {parentComments.map((parentComment) => (
           <CommentContainer key={parentComment.comment_id} props={{...props, parentComment: parentComment, getParentComment}} />
-        ))}     
+        ))}        
     </div>
   );
 };

@@ -1,35 +1,101 @@
 
-
-
 .navbar {
-    background-color: $background-defaultcolor;
+    background-color: $bg-black;
     height: 9vh;
     color: $font-Color-DarkBG;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
+  .dropdown-menu {
+    width: 350px;
+  }
+  .Nav-Link-Name {
+    color: $font-Color-DarkBG;
+  }
+.burger-color {
+  color: $bg-Lightblue;
+}
+.bi-large {
+  height: 130px;
+  width: 50px;
+}
+  // Nav Btn
+  .navbar .btn-link {
+   color: $font-Color-DarkBG;
+  // background-color: $primary-color;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  padding: 0.2rem 0.5rem;
+  width: 100px;
+}
+.navbar .btn-link:hover {
+  color: $bg-black;
+  background-color: $bg-Lightblue;
+  font-weight: 700;
+}
+
+.btn-style-Link:hover {
+  text-decoration: underline;
+}
 
 
-  @media (max-width: 768px) {
+
+  @media (max-width: 992px) {
     .navbar-collapse {
       position: absolute;
+      background-color: $bg-black;
       top: 56px;
-      left: 0;
+      right: 0px;
       z-index: 1;
-      width: 100%;
-      padding: 0 15px;
-      background-color: #f8f9fa;
-      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+      width: 50%;
+      padding: 10px 10px;
     }
     .navbar-nav {
       flex-direction: column;
-      margin: 0;
+      margin: 0px;
     }
     .navbar-nav > li {
-      margin: 5px 0;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      justify-content: center;
+    }
+    .navbar-nav > Link {
+      width: 100%;
     }
   }
- 
-  
+
+  @media (max-width: 375px) {
+    .navbar-collapse {
+      position: absolute;
+      background-color: $bg-black;
+      top: 56px;
+      right: 0px;
+      z-index: 1;
+      width: 100%;
+      padding: 10px 10px;
+    }
+    .navbar-nav {
+      flex-direction: column;
+      margin: 0px;
+    }
+    .navbar-nav > li {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      justify-content: center;
+    }
+    .navbar-nav > Link {
+      width: 100%;
+    }
+    .dropdown-menu {
+      width: 250px;
+    }
+  }
+
   
   
   

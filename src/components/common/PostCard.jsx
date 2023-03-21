@@ -45,16 +45,18 @@ const PostCard = ({ props }) => {
       <div className="card-body">
         <h4 className="card-title">{props.post.user_id}</h4>
         <h2 className="card-title">{props.post.title}</h2>
+
         <div className="card-text">
           <p>{props.post.content}</p>
         </div>
+
         <img src={props.post.image_url} alt="" className="card-img-top" />
-          <div className="d-flex">
+          {/* <div className="d-flex">
             <div className="ms-auto mt-2">
               <span className="font700">{commentCount}</span>
               <i class="bi bi-chat-dots-fill font-small-size me-3 mx-1"></i>
               </div>
-          </div>
+          </div> */}
       </div>
       <div>
         {/* <button
@@ -63,9 +65,13 @@ const PostCard = ({ props }) => {
         >
           Delete Post
         </button> */}
-        <div className="d-flex justify-content-center border-top border-bottom p-2">
-          <button className="btn font700 btn-primary flex-fill" type="button" onClick={handleShowCommentBox}>
+        <div className="d-flex justify-content-between border-top border-bottom p-2">
+          <button className="btn font700 btn-style-Link" type="button" onClick={handleShowCommentBox}>
             Comment
+          </button>
+          <button className="btn font700 btn-style-Link" type="button" onClick={handleShowCommentBox}>
+              <span className="font700">{commentCount}</span>
+              <i className="bi bi-chat-dots-fill font-small-size me-3 mx-1"></i>
           </button>
         </div>
         {isCommentBoxHidden && (
@@ -75,6 +81,4 @@ const PostCard = ({ props }) => {
     </div>
   );
 };
-
-
 export default PostCard;

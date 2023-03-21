@@ -80,7 +80,7 @@ const CommentInput = ({ props }) => {
   return (
     <div className="d-flex pt-3 mt-2 px-2">
       <img
-        className="rounded-circle smallMiniProfilePic mx-2 mt-1"
+        className="rounded-circle smallMiniProfilePicComment mx-2 mt-1"
         src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600"
         alt="..."
       />

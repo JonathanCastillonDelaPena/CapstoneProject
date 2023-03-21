@@ -1,10 +1,13 @@
 import React from "react";
 import '../assets/style/Global.css';
+import Nav from "../components/layout/Nav";
 
 const Profile = () => {
     return(
        <div className="header_wrapper">
-        <header><img src="https://www.denofgeek.com/wp-content/uploads/2020/07/One-Piece-Full-Cast-Header-Image.jpg?fit=2560%2C1440" className="bg"/></header>
+        <Nav />
+        <header className="mt-5">
+            <img src="https://www.denofgeek.com/wp-content/uploads/2020/07/One-Piece-Full-Cast-Header-Image.jpg?fit=2560%2C1440" className="bg"/></header>
         <div className="cols-container">
             <div className="left-col">
                 <div className="img-container">
