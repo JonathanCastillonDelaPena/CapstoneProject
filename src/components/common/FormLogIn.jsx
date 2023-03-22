@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSignIn, useIsAuthenticated } from "react-auth-kit";
 import axios, { AxiosError } from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import DBserverURI from "../../dataServices/dbServerURI";
 
 const FormLogIn = () => {
   const isAuthenticated = useIsAuthenticated();
@@ -45,13 +48,27 @@ const FormLogIn = () => {
             // "https://capstone.tristanviernes.com/login",
             values
           );
-
-          signIn({
-            token: response.data.accessToken,
-            expiresIn: 10800,
-            tokenType: "Bearer",
-            authState: { username: values.username },
+          console.log(response.status);
+          toast.success("Login Successful, Redirecting to Home", {
+            position: "top-left",
+            autoClose: 4500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
           });
+          setTimeout(
+            () =>
+              signIn({
+                token: response.data.accessToken,
+                expiresIn: 10800,
+                tokenType: "Bearer",
+                authState: { username: values.username },
+              }),
+            5000
+          );
         } catch (err) {
           if (err && err instanceof AxiosError)
             setError(err.response?.data.message);
@@ -60,9 +77,27 @@ const FormLogIn = () => {
           const responseData = err.response.data;
           console.log(responseData);
           if (responseData.error == "invalid") {
-            alert("Invalid username or password");
+            toast.error("Invalid username or password", {
+              position: "top-left",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
           } else {
-            alert(`${responseData.error}`);
+            toast.error(`${responseData.error}`, {
+              position: "top-left",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
           }
         }
       }}
@@ -71,6 +106,7 @@ const FormLogIn = () => {
         const { errors, touched, isValid, dirty } = formik;
         return (
           <Form>
+            <ToastContainer />
             <div className="divForm border border-1 rounded-3 p-3 bg-light">
               <div className="mb-3">
                 <label htmlFor="username" className="form-label">
