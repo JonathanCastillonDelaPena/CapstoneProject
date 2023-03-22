@@ -8,6 +8,7 @@ import HomePage from "../pages/HomePage";
 import PageLogin from "../pages/PageLogin";
 import PageSignup from "../pages/PageSignUp";
 import Profile from "../pages/Profile";
+import ChangeEmail from "../components/common/FormChangeEmail";
 
 const RoutesController = () => {
   return (
@@ -22,6 +23,7 @@ const RoutesController = () => {
           </RequireAuth>
         }
       />
+      <Route path="/changeEmail" element={<ChangeEmail />} />
       <Route path="/register" element={<PageSignup />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
