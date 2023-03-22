@@ -88,15 +88,6 @@ const Profile = () => {
     });
   }
 
-// Changable Button
-const [text, setText] = useState('Add friend');
-  let userType = 'user';
-  useEffect(() => {
-    if (userType === 'user') {
-      setText('Edit Profile');
-    }
-  }, [userType]);
-
     return(
        <div className="header_wrapper container">
         <Nav />
@@ -108,12 +99,9 @@ const [text, setText] = useState('Add friend');
     {/* CArdProfile */}
             <CardProfile />
 
-            <div className="right-col mt-3"> 
-                    
+            <div className="right-col mt-3">       
                     <div className="d-flex">
                         <h2 className="display font500">About</h2>
-                        <button className="btn btn-primary ms-auto ">{text}</button>
-
                     </div>
                     <div className="d-flex flex-column justify-content-center border rounded">
                         <div className="container">
@@ -122,8 +110,7 @@ const [text, setText] = useState('Add friend');
                             {displayPosts}
                             {loading && "Loading more Posts..."}
                             {error && "Error"}
-                        </div>
-                
+                        </div>                
             </div>
             </div>
         </div>

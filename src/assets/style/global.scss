@@ -59,8 +59,11 @@
 }
 //MINI PROFILE
 .miniProfile {
-  width: 16rem;
+  width: 50px;
+  height: 50px;
   font-weight: $font-weight700;
+  border-radius: 50%;
+  box-shadow: -2px 2px 3px;
  }
 //BACKGROUND
 .custom100vh {

@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export const CardProfile = () => {
+
+    const [text, setText] = useState('Add friend');
+        let userType = 'user';
+        useEffect(() => {
+            if (userType === 'user') {
+            setText('Edit Profile');
+            }
+        }, [userType]);
+
   return (
             <div className="left-col">
                 <div className="img-container">
@@ -8,6 +17,7 @@ export const CardProfile = () => {
                     <span></span>
                 </div>
                 <h2>User Name</h2>
+                <button className="btn btn-primary ms-auto ">{text}</button>
                 <ul className="about">
                     <li><span>300</span>Friends</li>
                     <li><span>10,074</span>Post</li>
