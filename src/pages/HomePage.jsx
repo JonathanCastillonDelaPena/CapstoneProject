@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
-import useLoadPosts from "../components/customHooks/useLoadPosts";
+
 
 // import Component
 import PostCard from "../components/common/PostCard";
@@ -11,6 +11,7 @@ import "../assets/style/global.scss";
 import CardProfileMini from "../components/common/CardProfileMini";
 import Footer from "../components/layout/Footer";
 import ModalPost from "../components/layout/ModalPost";
+import useLoadPosts from "../components/customHooks/useLoadPosts";
 // import CardStory from "../components/common/cardStories";
 
 const HomePage = () => {
@@ -49,9 +50,9 @@ const HomePage = () => {
   // Note: this user data must be in your local database.
   // Note: this data is only partial.
   const currentUser = {
-    user_id: 14,
+    user_id: 28,
     first_name: "Long",
-    last_name: "Takun",
+    last_name: "Tester",
   };
 
   // const getPosts = async () => {

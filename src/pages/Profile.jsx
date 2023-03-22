@@ -1,63 +1,130 @@
 import React from "react";
-import '../assets/style/Global.css';
+import { Link } from "react-router-dom";
+import { useState, useEffect, useRef, useCallback } from "react";
+
+// IMPORT
+import '../assets/style/global.css';
 import Nav from "../components/layout/Nav";
+import ModalPost from "../components/layout/ModalPost";
+import PostCard from "../components/common/PostCard";
+import PostForm from "../components/common/PostForm";
+import PostDataService from "../dataServices/postDataService";
+import useLoadPosts from "../components/customHooks/useLoadPosts";
+import { CardProfile } from "../components/common/CardProfile";
+// END IMPORT
 
 const Profile = () => {
+  const [submittedPost, setSubmittedPost] = useState(false);
+  const [lastFetchedRecord, setLastFetchedRecord] = useState(0);
+  const [limit, setLimit] = useState(5);
+  const { _posts, hasMore, loading, error, setPosts } = useLoadPosts(
+    limit,
+    lastFetchedRecord
+  );
+  const observer = useRef();
+  const lastPostElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          // console.log("visible");
+          // console.log(node);
+          setLastFetchedRecord(node.id - 1);
+        }
+      });
+
+      if (node) observer.current.observe(node);
+    },
+    [loading]
+  );
+  const currentUser = {
+    user_id: 28,
+    first_name: "Long",
+    last_name: "Tester",
+  };
+  const getLatestPost = async () => {
+    await PostDataService.getLatest()
+      .then((response) => {
+        const postArr = response.data;
+        setLastFetchedRecord(postArr[0].post_id);
+        setSubmittedPost(false);
+      })
+      .catch((err) => {
+        console.log(`\nError retrieving latest post from database.`);
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    if (submittedPost) {
+      setPosts([]);
+    }
+    getLatestPost();
+  }, [submittedPost]);
+
+  let displayPosts = <></>;
+  if (_posts.length !== 0) {
+    displayPosts = _posts.map((post, index) => {
+      if (_posts.length === index + 1) {
+        return (
+          <PostCard
+            props={{
+              post: post,
+              currentUser: currentUser,
+              ref: lastPostElementRef,
+            }}
+            key={post.post_id}
+          />
+        );
+      } else {
+        return (
+          <PostCard
+            props={{ post: post, currentUser: currentUser }}
+            key={post.post_id}
+          />
+        );
+      }
+    });
+  }
+
+// Changable Button
+const [text, setText] = useState('Add friend');
+  let userType = 'user';
+  useEffect(() => {
+    if (userType === 'user') {
+      setText('Edit Profile');
+    }
+  }, [userType]);
+
     return(
-       <div className="header_wrapper">
+       <div className="header_wrapper container">
         <Nav />
-        <header className="mt-5">
+        <ModalPost props={{ ...currentUser, setSubmittedPost }} />
+    {/* Cover Photo */}
+        <header className="mt-5 container">
             <img src="https://www.denofgeek.com/wp-content/uploads/2020/07/One-Piece-Full-Cast-Header-Image.jpg?fit=2560%2C1440" className="bg"/></header>
-        <div className="cols-container">
-            <div className="left-col">
-                <div className="img-container">
-                    <img src="http://images.wikia.com/onepiece/images/e/e6/Luffy_Wax.png" className="pic"/>
-                    <span></span>
-                </div>
-                <h2>Monkey D. Luffy</h2>
-                <p>GoMu GoMu User</p>
+        <div className="cols-container d-md-flex">
+    {/* CArdProfile */}
+            <CardProfile />
 
-                <ul className="about">
-                    <li><span>1,500,000</span>Bounty</li>
-                    <li><span>300</span>Following</li>
-                    <li><span>10,074</span>Followers</li>
-                </ul>
+            <div className="right-col mt-3"> 
+                    
+                    <div className="d-flex">
+                        <h2 className="display font500">About</h2>
+                        <button className="btn btn-primary ms-auto ">{text}</button>
 
-                <div className="content">
-                    <p>Pogi ako</p>
-
-                    <ul>
-                        <li><i class="bi bi-twitter"></i></li>
-                        <li><i class="bi bi-facebook"></i></li>
-                        <li><i class="bi bi-instagram"></i></li>
-                    </ul>
-                </div>
-            </div>
-            <div className="right-col">
-                <nav>
-                    <ul>
-                        <li><a href="#">Photos</a></li>
-                        <li><a href="#">Galleries</a></li>
-                        <li><a href="#">GROUP</a></li>
-                        <li><a href="#"></a>ABOUT</li>
-                    </ul>
-                    <button>Follow</button>
-                </nav>
+                    </div>
+                    <div className="d-flex flex-column justify-content-center border rounded">
+                        <div className="container">
+                        <PostForm props={{ ...currentUser, setSubmittedPost }} />
+                            <hr />
+                            {displayPosts}
+                            {loading && "Loading more Posts..."}
+                            {error && "Error"}
+                        </div>
                 
-                <div className="photos">
-                    <img src="http://img1.wikia.nocookie.net/__cb20130407172113/onepiece/es/images/f/f9/Luffy_Vs_Jinbei.jpg" />
-                    <img src="https://i.pinimg.com/originals/27/2a/8d/272a8d9c7150bc7c5787b769ac08f509.jpg" />
-                    <img src="https://i.ytimg.com/vi/cs1Sna2qPRw/maxresdefault.jpg" />
-                    <img src="https://i.pinimg.com/736x/90/8f/4f/908f4f7c4f43f5659464f10def47048f--robins-luffy.jpg" />
-                    <img src="https://i.pinimg.com/originals/31/e4/7f/31e47f3437cd8bc8ca3387779529641f.jpg" />
-                    <img src="https://i.ytimg.com/vi/a6KKCNpsrhw/maxresdefault.jpg" />
-                    <img src="https://i.ytimg.com/vi/lKIvrVzJ8a8/maxresdefault.jpg" />
-                    <img src="https://tse2.mm.bing.net/th?id=OIP.rKqxgWshvbz-6XVN9HFcywHaEK&pid=Api&P=0" />
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.UuxtImeO9DqLP6EpnraZ6QHaEK&pid=Api&P=0" />
-                    <img src="https://i.pinimg.com/originals/d3/35/c4/d335c4a4881b51def18376d7d580a68f.jpg" />
-                    <img src="https://i.pinimg.com/originals/d3/35/c4/d335c4a4881b51def18376d7d580a68f.jpg" />
-                    <img src="https://i.pinimg.com/originals/d3/35/c4/d335c4a4881b51def18376d7d580a68f.jpg" />
-                </div>
+            </div>
             </div>
         </div>
        </div>
