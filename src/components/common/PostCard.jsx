@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CommentDataService from "../../dataServices/commentDataService";
 import CommentSection from "../comment/CommentSection";
+import UserDataService from "../../dataServices/userDataService";
 
 const PostCard = ({ props }) => {
-  const [isCommentBoxHidden, setIsCommentBoxHidden] = useState(false);
+  const [isCommentBoxVisible, setIsCommentBoxHidden] = useState(false);
   const [commentCount, setCommentCount] = useState(0);
   // const handleRemovePost = (post_id, image_public_id) => {
   //   PostDataService.remove({
@@ -39,6 +40,22 @@ const PostCard = ({ props }) => {
       });
   };
 
+  const [postUser, setPostUser] = useState({});
+  const getPoster = async () => {
+    await UserDataService.getDetailsByPost({post_id: props.post.post_id })
+      .then((response) => {
+        const userArr = response.data;
+        setPostUser(userArr[0]);
+      })
+      .catch((err) => {
+        console.log(`\nError retrieving post user from database.`);
+        console.log(err);
+      });
+  }
+  useEffect(() => {
+    getPoster();
+  },[]);
+
   useEffect(() => {
     getCommentCount();
   },[props.post.post_id]);
@@ -47,7 +64,7 @@ const PostCard = ({ props }) => {
     <div className="card m-2" ref={props.ref} id={props.post.post_id}>
       
       <div className="card-body">
-        <h4 className="card-title">{props.post.user_id}</h4>
+        <h4 className="card-title">{postUser.first_name} {postUser.last_name}</h4>
         <h2 className="card-title">{props.post.title}</h2>
 
         <div className="card-text">
@@ -78,7 +95,7 @@ const PostCard = ({ props }) => {
               <i className="bi bi-chat-dots-fill font-small-size me-3 mx-1"></i>
           </button>
         </div>
-        {isCommentBoxHidden && (
+        {isCommentBoxVisible && (
           <CommentSection key={props.post.post_id} props={{...props, getCommentCount}} />
         )}
       </div>
