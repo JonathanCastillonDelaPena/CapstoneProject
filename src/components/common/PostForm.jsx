@@ -6,7 +6,6 @@ import '../../assets/style/global.css'
 
 const PostForm = ({ props }) => {
   let initialPostData = {
-    user_id: props.user_id,
     title: "",
     content: "",
     image_file: "",
@@ -56,7 +55,7 @@ const PostForm = ({ props }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    PostDataService.create(post)
+    PostDataService.create({...post, user_id: props.user_id})
       .then((response) => {
         console.log(response);
         alert(`Your Post was shared!`);

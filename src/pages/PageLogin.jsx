@@ -1,7 +1,7 @@
 import React from "react";
 import '../assets/style/global.css';
 import { Link } from "react-router-dom";
-import FormLogIn from "../components/common/formLogIn";
+import FormLogIn from "../components/common/FormLogIn";
 
 const PageLogin = () => {
     return (
