@@ -49,19 +49,8 @@ const HomePage = () => {
   );
 
   // The data of the current user.
-  // This is just temporary and should be changed
-  // to be dynamic.
-  // Note: this user data must be in your local database.
-  // Note: this data is only partial.
   const { username } = cookies.get("_auth_state");
   const [currentUser, setCurrentUser] = useState({});
-
-  // let currentUser = {
-  //   user_id: 14,
-  //   first_name: "Long",
-  //   last_name: "Takun",
-  // };
-  
 
   const getCurrentUser = async () => {
     await UserDataService.getDetails({ username: username })
@@ -78,17 +67,6 @@ const HomePage = () => {
   useEffect(() => {
     getCurrentUser();
   }, []);
-  // const getPosts = async () => {
-  //   await PostDataService.getAll()
-  //     .then((response) => {
-  //       setPosts(response.data);
-  //       // console.log(response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(`\nError retrieving posts from database.`);
-  //       console.log(err);
-  //     });
-  // };
 
   const getLatestPost = async () => {
     await PostDataService.getLatest()
