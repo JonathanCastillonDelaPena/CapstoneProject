@@ -1,102 +1,46 @@
 
-.navbar {
-    background-color: $bg-black;
+.navbarC {
+    background-color: #ffffff;
     height: 9vh;
     color: $font-Color-DarkBG;
   }
-  .dropdown-menu {
+  .dropdown-friend {
     width: 350px;
   }
-  .Nav-Link-Name {
-    color: $font-Color-DarkBG;
-  }
-.burger-color {
-  color: $bg-Lightblue;
-}
+
 .bi-large {
   height: 130px;
   width: 50px;
 }
-  // Nav Btn
-  .navbar .btn-link {
-   color: $font-Color-DarkBG;
-  // background-color: $primary-color;
-  font-size: 1rem;
-  text-align: center;
-  border: none;
-  border-radius: 10px;
-  text-decoration: none;
-  padding: 0.2rem 0.5rem;
-  width: 100px;
-}
-.navbar .btn-link:hover {
-  color: $bg-black;
-  background-color: $bg-Lightblue;
-  font-weight: 700;
+
+.navbarC .usr-dropdown {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn-style-Link:hover {
-  text-decoration: underline;
+.navbarC .usr-dropdown li{
+ height: 40px;
+}
+
+.userdropdownlist {
+  display: flex;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.userdropdownlist:hover {
+  background-color: $primary-color;
 }
 
 
-
-  @media (max-width: 992px) {
-    .navbar-collapse {
-      position: absolute;
-      background-color: $bg-black;
-      top: 56px;
-      right: 0px;
-      z-index: 1;
-      width: 50%;
-      padding: 10px 10px;
-    }
-    .navbar-nav {
-      flex-direction: column;
-      margin: 0px;
-    }
-    .navbar-nav > li {
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      align-items: end;
-      justify-content: center;
-    }
-    .navbar-nav > Link {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 375px) {
-    .navbar-collapse {
-      position: absolute;
-      background-color: $bg-black;
-      top: 56px;
-      right: 0px;
-      z-index: 1;
-      width: 100%;
-      padding: 10px 10px;
-    }
-    .navbar-nav {
-      flex-direction: column;
-      margin: 0px;
-    }
-    .navbar-nav > li {
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      align-items: end;
-      justify-content: center;
-    }
-    .navbar-nav > Link {
-      width: 100%;
-    }
-    .dropdown-menu {
-      width: 250px;
-    }
-  }
-
-  
-  
+.userLink {
+  color: $primary-color;
+} 
+.userLink:hover{
+  color: #ffffff;
+}
   
   

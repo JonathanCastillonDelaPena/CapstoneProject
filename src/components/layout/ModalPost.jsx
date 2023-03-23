@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PostDataService from '../../dataServices/postDataService';
-import ImageFileSelectorModal from '../common/ImageFileSelectorModal';
+import ImageFileSelector from '../common/ImageFileSelector';
 import '../../assets/style/global.css';
 
 
 const ModalPost = ({ props }) => {
-
   let initialPostData = {
-    user_id: props.user_id,
     title: "",
     content: "",
     image_file: "",
@@ -57,7 +55,7 @@ const ModalPost = ({ props }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    PostDataService.create(post)
+    PostDataService.create({...post, user_id: props.user_id})
       .then((response) => {
         console.log(response);
         alert(`Your Post was shared!`);
@@ -85,33 +83,21 @@ const ModalPost = ({ props }) => {
       <div className="modal-body">
       <div className="d-flex align-items-center mb-3">
           {/* SmallProfilePic Resuable CSS classname */}
-          <img src="https://images.pexels.com/photos/10957721/pexels-photo-10957721.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="primaryPicSample" className="smallMiniProfilePic rounded-circle" />
+          <img src={props.image_url} alt="primaryPicSample" className="smallMiniProfilePic rounded-circle" />
           {/* {user_id} This is the user ID PROPS */}
           <span className="font-small-size mb-4 ms-2 font700 font-Color-Black">{props.first_name} {props.last_name}</span>
-      </div>
+        </div>
      {/* FORM POSTMODAL */}
 
      <form onSubmit={handleSubmit}>
             <div className="form-group">
-             {/* <input
-              required
-              type="text"
-              className="form-control mb-1"
-              placeholder="Your creative Post title..."
-              id="title"
-              name="title"
-              value={post.title}
-              onChange={handleInputChange}
-            /> */}
 {/* TextArea */}
             <div className="form-group">
-              
-            <ImageFileSelectorModal
-                imagePreview={handleImage}
-                postState={{isPostSubmitted, setIsPostSubmitted, setImage}}
-                image={imagePreview.image}
-            />
-
+              <ImageFileSelector
+                  imagePreview={handleImage}
+                  postState={{isPostSubmitted, setIsPostSubmitted, setImage}}
+                  image={imagePreview.image}
+              />
               <textarea
                 required
                 className="form-control"
