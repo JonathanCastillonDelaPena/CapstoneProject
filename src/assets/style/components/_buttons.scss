@@ -1,0 +1,49 @@
+
+
+.btnC {
+    height: 40px;
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    border: 0;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    border: 0;
+}
+
+.btn-primary:hover {
+    background-color: $primary-color;
+    color: $font-Color;
+}
+.btn-highlight{
+    background-color: $highlight-color;
+    color: $font-Color-DarkBG;
+}
+.btn-highlight:hover{
+    background-color: $primary-color;
+}
+.btn-highlightHome {
+    background-color: transparent;
+    color: $primary-color;
+}
+.btn-highlightHome:hover {
+    background-color: $primary-color;
+    color: $font-Color-DarkBG;
+}
+
+.navbarC .btn-Link {
+    background-color: $primary-color;
+}
+
+// UserButton
+.user-btn {
+    height: 40px;
+    background-color: transparent;
+    color: $font-Color-DarkBG;
+    padding-top: 5px;
+    border-radius: 15px;
+}
+
