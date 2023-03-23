@@ -3,7 +3,8 @@ import '../../assets/style/global.css'
 import { Link } from 'react-router-dom';
 import { useSignOut } from 'react-auth-kit'
 import ModalPost from './ModalPost';
-function Nav() {
+import SearchBox from '../searchBox/SearchBox';
+function Nav({resultState}) {
   
   const signOut = useSignOut()
   return (
@@ -24,13 +25,7 @@ function Nav() {
           </button>
 
           {/* SEARCH */}
-          <form className="box">
-            <Link type="submit" data-bs-toggle="tooltip" data-bs-placement="left" title="Search">
-              <i className="bi bi-search"></i>
-              <input className="input-text" type="search" placeholder="Type Name Here" aria-label="Search" />
-            </Link>
-          </form>
-         
+          <SearchBox resultState={resultState}/>
 
           {/* MENU */}
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
