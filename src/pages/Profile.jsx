@@ -173,7 +173,7 @@ const Profile = () => {
         .catch((error) => {
           if (axios.isCancel(error)) return;
         });
-        return () => cancel();
+      return () => cancel();
     }
   }, [lastFetchedRecord]);
 
