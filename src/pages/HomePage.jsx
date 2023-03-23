@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 
-
 // import Component
 import PostCard from "../components/common/PostCard";
 import PostForm from "../components/common/PostForm";
@@ -16,6 +15,7 @@ import useLoadPosts from "../components/customHooks/useLoadPosts";
 // import CardStory from "../components/common/cardStories";
 
 import { Cookies } from "react-cookie";
+import SearchResult from "../components/searchBox/SearchResult";
 const cookies = new Cookies();
 
 const HomePage = () => {
@@ -73,11 +73,11 @@ const HomePage = () => {
         console.log(`\nError retrieving current user from database.`);
         console.log(err);
       });
-  }
+  };
 
   useEffect(() => {
     getCurrentUser();
-  },[]);
+  }, []);
   // const getPosts = async () => {
   //   await PostDataService.getAll()
   //     .then((response) => {
@@ -135,10 +135,11 @@ const HomePage = () => {
       }
     });
   }
+  const [results, setResults] = useState([]);
 
   return (
     <div>
-      <Nav props={{ ...currentUser, setSubmittedPost }}  />
+      <Nav resultState={{results, setResults}} props={{ ...currentUser, setSubmittedPost }}  />
       {/* Modal */}
       <ModalPost props={{ ...currentUser, setSubmittedPost }} />
 
@@ -154,6 +155,7 @@ const HomePage = () => {
           className="MainContent"
           style={{ flexBasis: "100%", maxWidth: "100%" }}
         >
+          <SearchResult results={results} />
           {/* New Post */}
           <div className="container w-100 px-3">
             <div className="card boxshadow">
@@ -181,8 +183,7 @@ const HomePage = () => {
           <div className="container">
             {displayPosts}
             {loading && "Loading more Posts..."}
-            {error && "Error"}
-          </div>
+            </div>
         </div>
         <div
           className="RightContent"

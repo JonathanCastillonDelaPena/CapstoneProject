@@ -12,15 +12,22 @@ const getDetails = async (data) => {
 };
 
 const getDetailsByPost = async (data) => {
-    const token = cookies.get("_auth", true);
-    return await serverURI.post("/post/userdetails/", data, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-  };
+  const token = cookies.get("_auth", true);
+  return await serverURI.post("/post/userdetails/", data, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
 
+const searchByName = async (query) => {
+  const token = cookies.get("_auth", true);
+  return await serverURI.post("/search/", query, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
 
-
-const UserDataService = { getDetails, getDetailsByPost };
+const UserDataService = { getDetails, getDetailsByPost, searchByName };
 export default UserDataService;

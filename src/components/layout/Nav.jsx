@@ -3,6 +3,9 @@ import '../../assets/style/global.css'
 import { Link } from 'react-router-dom';
 import { useSignOut } from 'react-auth-kit'
 import ModalPost from './ModalPost';
+import SearchBox from '../searchBox/SearchBox';
+function Nav({resultState}) {
+  
 
 
 const Nav = ({ props }) => {
@@ -15,12 +18,7 @@ const Nav = ({ props }) => {
             <img className='kodeBook-logo d-none d-sm-block' src="https://res.cloudinary.com/dbjikdtuj/image/upload/v1679567851/Capstone/Posts/ypqhckgmerrrmgypxoye.png" alt="" />
           {/* END LOGO */}
             <div className='nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0'>
-              <form className="box">
-                  <Link type="submit" data-bs-toggle="tooltip" data-bs-placement="left" title="Search">
-                    <i className="bi bi-search"></i>
-                    <input className="input-text" type="search" placeholder="Type Name Here" aria-label="Search" />
-                  </Link>
-              </form>
+               <SearchBox resultState={resultState}/>
             </div>
 
             <ul className="ms-auto mb-2 mb-lg-0">
@@ -131,4 +129,4 @@ const Nav = ({ props }) => {
   )
 }
 
-export default Nav
+export default Nav;
