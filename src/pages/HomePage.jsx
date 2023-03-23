@@ -49,18 +49,8 @@ const HomePage = () => {
   );
 
   // The data of the current user.
-  // This is just temporary and should be changed
-  // to be dynamic.
-  // Note: this user data must be in your local database.
-  // Note: this data is only partial.
   const { username } = cookies.get("_auth_state");
   const [currentUser, setCurrentUser] = useState({});
-
-  // let currentUser = {
-  //   user_id: 14,
-  //   first_name: "Long",
-  //   last_name: "Takun",
-  // };
 
   const getCurrentUser = async () => {
     await UserDataService.getDetails({ username: username })
@@ -77,17 +67,6 @@ const HomePage = () => {
   useEffect(() => {
     getCurrentUser();
   }, []);
-  // const getPosts = async () => {
-  //   await PostDataService.getAll()
-  //     .then((response) => {
-  //       setPosts(response.data);
-  //       // console.log(response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(`\nError retrieving posts from database.`);
-  //       console.log(err);
-  //     });
-  // };
 
   const getLatestPost = async () => {
     await PostDataService.getLatest()
@@ -138,7 +117,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Nav resultState={{results, setResults}}/>
+      <Nav resultState={{results, setResults}} props={{ ...currentUser, setSubmittedPost }}  />
       {/* Modal */}
       <ModalPost props={{ ...currentUser, setSubmittedPost }} />
 
@@ -147,16 +126,42 @@ const HomePage = () => {
           className="LeftContent d-flex flex-column align-items-center"
           style={{ flexBasis: "50%", maxWidth: "50%" }}
         >
-          <CardProfileMini />
+          {/* NeedFix */}
+          <CardProfileMini props={{ ...currentUser, setSubmittedPost }} />
         </div>
         <div
           className="MainContent"
           style={{ flexBasis: "100%", maxWidth: "100%" }}
         >
           <SearchResult results={results} />
-          <PostForm props={{ ...currentUser, setSubmittedPost }} />
-          {displayPosts}
-          {loading && "Loading more Posts..."}
+          {/* New Post */}
+          <div className="container w-100 px-3">
+            <div className="card boxshadow">
+              <div className="mt-3">
+                <img className="smallMiniProfilePic rounded-circle ms-3 boxshadow" src={currentUser.image_url} alt="" />
+                  <button className='text-decoration w-75 ms-3' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                   <input className="form-control textinputrounded boxshadow" type="text" placeholder="Your Post Here" disabled/>
+                  </button>
+              </div>
+              <div className="container mt-4 w-100 border-top p-2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button className="btn w-50" >
+                <i className="bi bi-camera-fill me-1"></i>
+                  <span className="textshadow">Upload</span>
+                </button>
+                <button className="btn w-50" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  <i class="bi bi-chat-square-dots-fill me-1"></i>
+                  <span className="textshadow">Post</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* <PostForm props={{ ...currentUser, setSubmittedPost }} /> */}
+          {/*END New Post */}
+          <div className="container">
+            {displayPosts}
+            {loading && "Loading more Posts..."}
+            </div>
         </div>
         <div
           className="RightContent"

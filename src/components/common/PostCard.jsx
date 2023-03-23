@@ -67,7 +67,7 @@ const PostCard = ({ props }) => {
   //     month: "long",
   //     day: "numeric",
   //   });
-  const createdDate = new Date(props.post.created_at);
+const createdDate = new Date(props.post.created_at);
 const currentDate = new Date();
 const diffInMs = currentDate.getTime() - createdDate.getTime();
 const diffInDays = Math.round(diffInMs / (1000 * 60 * 60 * 24));
@@ -93,7 +93,7 @@ if (diffInDays === 0) {
 }
 
   return (
-    <div className="card m-2" ref={props.ref} id={props.post.post_id}>
+    <div className="card m-2 boxshadow textshadow" ref={props.ref} id={props.post.post_id}>
       <div className="card-body">
         <div className="d-flex">
           <img className="miniProfile" src={postUser.image_url} alt="" />

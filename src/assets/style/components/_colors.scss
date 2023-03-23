@@ -1,17 +1,20 @@
 // Colors
-$primary-color: #F44E3F;
-$secondary-color: #f7f1f2;
+$primary-color: #7F5DF0;
+$secondary-color:  #a5b8f3;
+$highlight-color: #f84d4d;
 
+// Hover Color
+$btn-highlight-hover: #f87878;
+$primary-color-hover: #42ebc9;
 // background color
-$background-defaultcolor: #E1EFF6;
+$background-defaultcolor: #fafafa;
 $bg-Color-Dark: #000000;
 $background-SecondColor: #eeeeee;
-$bg-Lightblue : #97D2FB;
-$bg-Aqua : #80FFE8; 
+$bg-Lightblue : #D2E0FF;
+$bg-Aqua : #D2E0FF; 
 $bg-black: #1C2321;
 $bg-Color-Gray: #cdcdce;
-
-
+$bg-blue: #0A1C3F;
 // font color
 $font-Color: #000000;
 $font-Color-DarkBG: #E1EFF6;
@@ -27,6 +30,10 @@ $font-Color-DarkBG: #E1EFF6;
 } 
 .bg-lightCustom {
     background-color: $background-defaultcolor;
+}
+
+.bg-blue{
+    background-color: #0A1C3F;
 }
 
 .color-Light {
