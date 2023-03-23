@@ -1,17 +1,22 @@
 import React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
-import useLoadPosts from "../components/customHooks/useLoadPosts";
+
 
 // import Component
 import PostCard from "../components/common/PostCard";
 import PostForm from "../components/common/PostForm";
 import PostDataService from "../dataServices/postDataService";
+import UserDataService from "../dataServices/userDataService";
 import Nav from "../components/layout/Nav";
 import "../assets/style/global.scss";
 import CardProfileMini from "../components/common/CardProfileMini";
 import Footer from "../components/layout/Footer";
 import ModalPost from "../components/layout/ModalPost";
+import useLoadPosts from "../components/customHooks/useLoadPosts";
 // import CardStory from "../components/common/cardStories";
+
+import { Cookies } from "react-cookie";
+const cookies = new Cookies();
 
 const HomePage = () => {
   // const [posts, setPosts] = useState([]);
@@ -48,12 +53,30 @@ const HomePage = () => {
   // to be dynamic.
   // Note: this user data must be in your local database.
   // Note: this data is only partial.
-  const currentUser = {
-    user_id: 14,
-    first_name: "Long",
-    last_name: "Takun",
-  };
+  const { username } = cookies.get("_auth_state");
+  const [currentUser, setCurrentUser] = useState({});
 
+  // let currentUser = {
+  //   user_id: 14,
+  //   first_name: "Long",
+  //   last_name: "Takun",
+  // };
+
+  const getCurrentUser = async () => {
+    await UserDataService.getDetails({ username: username })
+      .then((response) => {
+        const userArr = response.data;
+        setCurrentUser(userArr[0]);
+      })
+      .catch((err) => {
+        console.log(`\nError retrieving current user from database.`);
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    getCurrentUser();
+  },[]);
   // const getPosts = async () => {
   //   await PostDataService.getAll()
   //     .then((response) => {
@@ -115,12 +138,15 @@ const HomePage = () => {
   return (
     <div>
       <Nav />
-    {/* Modal */}
-   <ModalPost props={{ ...currentUser, setSubmittedPost }} />
+      {/* Modal */}
+      <ModalPost props={{ ...currentUser, setSubmittedPost }} />
 
       <div className="d-md-flex pt-3 bg-lightCustom mt-5">
-        <div className="LeftContent d-flex flex-column align-items-center" style={{flexBasis: '50%', maxWidth: '50%'}}>
-            <CardProfileMini />
+        <div
+          className="LeftContent d-flex flex-column align-items-center"
+          style={{ flexBasis: "50%", maxWidth: "50%" }}
+        >
+          <CardProfileMini />
         </div>
         <div
           className="MainContent"

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import './components/colors';
 @import './components/buttons';
 @import './components/fonts';
@@ -7,13 +7,14 @@
 @import './components//pageLogin';
 @import './components//pageProfile';
 @import './components//inputText';
+@import './components/profile';
 
 //MainBody
 *{
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-style: $font-style;
+  font-family: 'Roboto', sans-serif;
 }
 
 .mainBody{
@@ -58,8 +59,11 @@
 }
 //MINI PROFILE
 .miniProfile {
-  width: 16rem;
+  width: 50px;
+  height: 50px;
   font-weight: $font-weight700;
+  border-radius: 50%;
+  box-shadow: -2px 2px 3px;
  }
 //BACKGROUND
 .custom100vh {
