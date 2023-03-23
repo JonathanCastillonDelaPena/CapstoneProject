@@ -1,11 +1,11 @@
 import serverURI from "./dbServerURI";
 import { Cookies } from "react-cookie";
 const cookies = new Cookies();
-const token = cookies.get("_auth", true);
 
 const postBaseURL = "/post/";
 
 const getAll = async () => {
+  const token = cookies.get("_auth", true);
   return await serverURI.get(postBaseURL, {
     headers: {
       authorization: `Bearer ${token}`,
@@ -13,7 +13,31 @@ const getAll = async () => {
   });
 };
 
+const getLatest = async () => {
+  const token = cookies.get("_auth", true);
+  return await serverURI.get(postBaseURL + "latest", {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+const getAllPaginated = async (_limit, _lastFetchedRecord, cancel) => {
+  const token = cookies.get("_auth", true);
+  return await serverURI.get(postBaseURL + "paginated", {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+    params: {
+      limit: _limit,
+      last_fetched_record: _lastFetchedRecord,
+    },
+    cancelToken: cancel,
+  });
+};
+
 const create = async (data) => {
+  const token = cookies.get("_auth", true);
   return await serverURI.post(postBaseURL, data, {
     headers: {
       "Content-Type": "multipart/form-data",
@@ -23,6 +47,7 @@ const create = async (data) => {
 };
 
 const remove = (data) => {
+  const token = cookies.get("_auth", true);
   return serverURI.delete(postBaseURL, {
     data: data,
     headers: {
@@ -31,5 +56,5 @@ const remove = (data) => {
   });
 };
 
-const PostDataService = { getAll, create, remove };
+const PostDataService = { getAll, getLatest, getAllPaginated, create, remove };
 export default PostDataService;

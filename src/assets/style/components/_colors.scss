@@ -3,10 +3,36 @@ $primary-color: #F44E3F;
 $secondary-color: #f7f1f2;
 
 // background color
-$background-defaultcolor: #FFFFFC;
-$bg-Color-Dark: #0c0c0c;
+$background-defaultcolor: #E1EFF6;
+$bg-Color-Dark: #000000;
 $background-SecondColor: #eeeeee;
+$bg-Lightblue : #97D2FB;
+$bg-Aqua : #80FFE8; 
+$bg-black: #1C2321;
+$bg-Color-Gray: #cdcdce;
+
 
 // font color
 $font-Color: #000000;
-$font-Color-DarkBG: #f8f6f6;
+$font-Color-DarkBG: #E1EFF6;
+
+.bg-Aqua {
+    background-color: $bg-Aqua;
+}
+.bg-black {
+    background-color: $bg-black;
+}
+.bg-Lightblue{
+    background-color: $bg-Lightblue;
+} 
+.bg-lightCustom {
+    background-color: $background-defaultcolor;
+}
+
+.color-Light {
+  color: $font-Color-DarkBG;  
+}
+
+.font-Color-Black {
+    color: $font-Color;
+}

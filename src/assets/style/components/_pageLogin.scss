@@ -1,9 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
 * {
     font-family: 'Lato', sans-serif;
 }
+
 .pageLogInContainer {
     background-image: url("https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+.bi-large {
+    height: 30px;
+    width: 50px;
 }
 .containerLogIn {
     height: 100vh;

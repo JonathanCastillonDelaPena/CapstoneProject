@@ -31,26 +31,73 @@ const ChangeEmail = () => {
 //     }; 
     
     return (
-        <form className="border-box container mx-auto">
-            <h1>General Account Settings</h1>
-            <div className="form-group container">
-            <label for="name" className="name">Name</label>
-                <p>Monkey D. Goku</p>
-            <button className="" type="button" class="btn btn-secondary" >Edit</button>
+        <div className="container">
+            <div className="main">
+                <div className="topbar">
+                    <a href="">Home</a>
+                    <a href="">Profile</a>
+                    <a href="">Settings</a>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 mt-1">
+                        <div className="card text-center sidebar">
+                            <div className="card-body">
+                                <img src="https://i.pinimg.com/originals/0f/17/11/0f1711a4053360cba6f5422e9ee2a9d6.jpg" alt="" className="rounded-circle w-50 "/>
+                                <div className="mt-3">
+                                    <h3>Monkey D. Goku</h3>
+                                    <i class="bi bi-house-door-fill"><a href="">Home</a></i>
+                                    <i class="bi bi-gear"><a href="">General</a></i>
+                                    <i class="bi bi-globe-americas"><a href="">Language &Region</a></i>
+                                    <i class="bi bi-geo-alt"><a href="">Location</a></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-8 mt-1">
+                        <div className="card mb-3 content">
+                            <h1 className="m-3 pt-3"> About</h1>
+                            <div className="card-body">
+                                <div className="row">
+                                    <div className="col-md-3">
+                                        <h5>Full Name</h5>
+                                    </div>
+                                    <div className="col-md-9 text-secondary">
+                                        Monkey D. Goku
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className="row">
+                                    <div className="col-md-3">
+                                        <h5>Phone</h5>
+                                    </div>
+                                    <div className="col-md-9 text-secondary">
+                                        +09123454643
+                                    </div> 
+                                </div>
+                                <hr />
+                                <div className="row">
+                                <div className="col-md-3">
+                                    <h5>Email</h5>
+                                </div>
+                                <div className="col-md-9 text-secondary">
+                                    monkeydgoku@gmail.com
+                                </div>
+                                </div>
+                                <hr />
+                                <div className="row">
+                                    <div className="col-md-3">
+                                        <h5>Address</h5>
+                                    </div>
+                                    <div className="col-md-9 text-secondary">
+                                        South Blue Sea
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="form-group">
-            <label for="phone" className="number">Phone Number</label>
-                <p>+092922223412</p>
-            <button className="" type="button" class="btn btn-secondary" >Edit</button>
-            </div>
-            <div className="form-group">
-            <label for="email" className="contact">Add account contact</label>
-                <p>goku@gmail.com</p>
-            <button className="" type="button" class="btn btn-secondary" >Edit</button>
-            </div><br />
-            <button type="submit" className="btn btn-primary">Save Changes</button>
-        </form>
-
+        </div>
     )
 };
 
