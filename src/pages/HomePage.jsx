@@ -12,6 +12,7 @@ import CardProfileMini from "../components/common/CardProfileMini";
 import Footer from "../components/layout/Footer";
 import ModalPost from "../components/layout/ModalPost";
 import useLoadPosts from "../components/customHooks/useLoadPosts";
+import Scrollbutton from "../components/common/Scrollbutton";
 // import CardStory from "../components/common/cardStories";
 
 import { Cookies } from "react-cookie";
@@ -114,26 +115,26 @@ const HomePage = () => {
     });
   }
   const [results, setResults] = useState([]);
-
+     
   return (
     <div>
       <Nav resultState={{results, setResults}} props={{ ...currentUser, setSubmittedPost }}  />
       {/* Modal */}
       <ModalPost props={{ ...currentUser, setSubmittedPost }} />
 
-      <div className="d-md-flex pt-3 bg-lightCustom mt-5">
+      <div className="d-md-flex pt-3 bg-lightCustom mainContainer">
         <div
           className="LeftContent d-flex flex-column align-items-center"
-          style={{ flexBasis: "50%", maxWidth: "50%" }}
+          style={{ flexBasis: "70%", maxWidth: "100%" }}
         >
-          {/* NeedFix */}
-          <CardProfileMini props={{ ...currentUser, setSubmittedPost }} />
+          {/* Search */}
+          <SearchResult results={results} />
         </div>
         <div
           className="MainContent"
           style={{ flexBasis: "100%", maxWidth: "100%" }}
         >
-          <SearchResult results={results} />
+         
           {/* New Post */}
           <div className="container w-100 px-3">
             <div className="card boxshadow">
@@ -158,18 +159,21 @@ const HomePage = () => {
 
           {/* <PostForm props={{ ...currentUser, setSubmittedPost }} /> */}
           {/*END New Post */}
-          <div className="container">
+            <div className="container">
             {displayPosts}
             {loading && "Loading more Posts..."}
             </div>
         </div>
         <div
           className="RightContent"
-          style={{ flexBasis: "70%", maxWidth: "70%" }}
+          style={{ flexBasis: "50%", maxWidth: "100%" }}
         >
-          <h1>Chat</h1>
+          <CardProfileMini props={{ ...currentUser, setSubmittedPost }} />
         </div>
       </div>
+        {/* Back to top */}
+        <Scrollbutton />
+        
       <Footer />
     </div>
   );

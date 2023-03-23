@@ -37,7 +37,7 @@ const SearchBox = ({ resultState }) => {
   return (
     <>
       <div className="box">
-        <form onSubmit={handleSubmit}>
+        {/* <form onSubmit={handleSubmit}>
           <Link
             type="submit"
             data-bs-toggle="tooltip"
@@ -47,7 +47,7 @@ const SearchBox = ({ resultState }) => {
             <i className="bi bi-search"></i>
           </Link>
           <input
-            className="input-text"
+            className="input-text form-control"
             type="text"
             id="query"
             name="query"
@@ -65,6 +65,37 @@ const SearchBox = ({ resultState }) => {
           ) : (
             <></>
           )}
+        </form> */}
+        <form onSubmit={handleSubmit} className="input-group">
+          <Link
+            className="input-group-text"
+            type="submit"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            title="Search"
+
+          >
+            <i className="bi bi-search"></i>
+          </Link>
+            <input
+              className="input-text form-control"
+              type="text"
+              id="query"
+              name="query"
+              value={search.query}
+              onChange={handleInputChange}
+              placeholder="Type Name Here"
+              aria-label="Search"
+            />
+  {resultState.results.length !== 0 ? (
+              <button
+                type="button"
+                className="btn btn-close mt-1"
+                onClick={clearResults}
+              ></button>
+              ) : (
+                <></>
+              )}
         </form>
       </div>
     </>

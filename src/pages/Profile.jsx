@@ -9,7 +9,9 @@ import Nav from "../components/layout/Nav";
 import ModalPost from "../components/layout/ModalPost";
 import PostCard from "../components/common/PostCard";
 import PostForm from "../components/common/PostForm";
+import SearchResult from "../components/searchBox/SearchResult";
 import PostDataService from "../dataServices/postDataService";
+import Scrollbutton from "../components/common/Scrollbutton";
 import UserDataService from "../dataServices/userDataService";
 import { CardProfile } from "../components/common/CardProfile";
 import { Cookies } from "react-cookie";
@@ -18,88 +20,6 @@ const cookies = new Cookies();
 // END IMPORT
 
 const Profile = () => {
-  //#region
-
-  // const [submittedPost, setSubmittedPost] = useState(false);
-  // const [results, setResults] = useState([]);
-
-  // // The data of the current user.
-  // const { username } = cookies.get("_auth_state");
-  // const [currentUser, setCurrentUser] = useState({});
-
-  // const [lastFetchedRecord, setLastFetchedRecord] = useState(0);
-  // const [limit, setLimit] = useState(5);
-  // // const { _posts, hasMore, loading, error, setPosts } = useLoadPostsByUser(
-  // //   limit,
-  // //   lastFetchedRecord,
-  // //   currentUser
-  // // );
-
-  // const observer = useRef();
-
-  // const getCurrentUser = async () => {
-  //   await UserDataService.getDetails({ username: username })
-  //     .then((response) => {
-  //       const userArr = response.data;
-  //       setCurrentUser(userArr[0]);
-  //     })
-  //     .catch((err) => {
-  //       console.log(`\nError retrieving current user from database.`);
-  //       console.log(err);
-  //     });
-  // };
-
-  // const getLatestPost = async () => {
-  //   await PostDataService.getLatestByUser(currentUser.user_id)
-  //     .then((response) => {
-  //       const postArr = response.data;
-  //       setLastFetchedRecord(postArr[0].post_id);
-  //       setSubmittedPost(false);
-  //       // console.log(response.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(`\nError retrieving latest post from database.`);
-  //       console.log(err);
-  //     });
-  // };
-
-  // const lastPostElementRef = useCallback(
-  //   (node) => {
-  //     if (loading) return;
-  //     if (observer.current) observer.current.disconnect();
-
-  //     observer.current = new IntersectionObserver((entries) => {
-  //       if (entries[0].isIntersecting) {
-  //         // console.log("visible");
-  //         // console.log(node);
-  //         setLastFetchedRecord(node.id - 1);
-  //       }
-  //     });
-
-  //     if (node) observer.current.observe(node);
-  //   },
-  //   [loading]
-  // );
-
-  // useEffect(() => {
-  //   if (submittedPost) {
-  //     setPosts([]);
-  //   }
-  //   getLatestPost();
-  // }, [submittedPost]);
-
-  // useEffect(() => {
-  //   if (lastFetchedRecord === 0) return;
-
-  //   getLatestPost();
-  // },[currentUser]);
-
-  // useEffect(() => {
-  //   getCurrentUser();
-  // }, []);
-
-  //#endregion
-
   const [posts, setPosts] = useState([]);
   const [results, setResults] = useState([]); // For searching of user by Name.
   const [currentUser, setCurrentUser] = useState({});
@@ -232,6 +152,7 @@ const Profile = () => {
         resultState={{ results, setResults }}
         props={{ ...currentUser, setSubmittedPost }}
       />
+      {/* <SearchResult results={results} /> */}
       <ModalPost props={{ ...currentUser, setSubmittedPost }} />
       {/* Cover Photo */}
       <header className="mt-5 container">
@@ -297,6 +218,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <Scrollbutton />
     </div>
   );
 };
