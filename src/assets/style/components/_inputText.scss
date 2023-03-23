@@ -16,21 +16,22 @@
     cursor: pointer;
     align-items: center;
     height: 35px;
+    width: 100%;
 }
-.box:hover .input-text{
-    width: 250px;
-    // border-radius: 18px;
-    // padding: 0px 15px;
-    // border: 0;
-    // font-weight: 700;
-    // background: transparent;
-}
+// .box:hover .input-text{
+//     width: 250px;
+//     // border-radius: 18px;
+//     // padding: 0px 15px;
+//     // border: 0;
+//     // font-weight: 700;
+//     // background: transparent;
+// }
 .box .input-text {
-    width: 0px;
+    width: 200px;
     padding: 0px 15px;
-    border: 0;
+    border: 1;
     outline: none;
-    transition: 0.8s;
+    transition: 0.8s;   
 }
 
 .text-decoration {

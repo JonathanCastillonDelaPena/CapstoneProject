@@ -1,33 +1,58 @@
 
-
-
-@media (max-width: 992px) {
-    .navbar-collapse {
-      position: absolute;
-      background-color: $bg-black;
-      top: 56px;
-      right: 0px;
-      z-index: 1;
-      width: 50%;
-      padding: 10px 10px;
-    }
-    .navbar-nav {
-      flex-direction: column;
-      margin: 0px;
-    }
-    .navbar-nav > li {
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      align-items: end;
-      justify-content: center;
-    }
-    .navbar-nav > Link {
-      width: 100%;
-    }
+@media (min-width: 992px) {
+  .mainContainer {
+    margin-top: 80px;
   }
 
-  @media (max-width: 375px) {
+  .scrollBtn {
+    position: fixed; 
+    width: 50px;
+    right: 10%;
+    bottom: 40px;
+    height: 20px;
+    font-size: 3rem;
+    z-index: 1;
+    cursor: pointer;
+    color: #f84d4d;
+    border: none;
+    background-color: transparent;
+    margin-bottom: 20px;
+}
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbarC {
+      width: 100%;
+      padding: 10px 10px;
+      height: 10vh;
+    }
+
+    .scrollBtn {
+      position: fixed; 
+      width: 50px;
+      right: 10%;
+      bottom: 40px;
+      height: 20px;
+      font-size: 3rem;
+      z-index: 1;
+      cursor: pointer;
+      color: #f84d4d;
+      border: none;
+      background-color: transparent;
+      margin-bottom: 20px;
+  }
+  .scrollBtn .bi {
+    font-size: 50px;
+  }
+    
+  }
+
+  @media (max-width: 390px) {
     .navbarC {
       width: 100%;
       padding: 10px 10px;
@@ -55,5 +80,15 @@
 }
     .navbarC .dropdown-menu {
         left: 100%;
+    }
+    .mainContainer {
+      margin-top: 130px;
+    }
+
+    .RightContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
   }

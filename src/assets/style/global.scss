@@ -74,8 +74,10 @@ $boxshadow : 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 //LOGIN PAGE
 .pageLogInContainer {
-    background-image: url("https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-}
+    background-image: url("https://images.pexels.com/photos/623919/pexels-photo-623919.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 .containerLogIn {
     height: 100vh;
     /* min-width: 300px; */
@@ -108,9 +110,14 @@ $boxshadow : 0px 2px 2px rgba(0, 0, 0, 0.3);
 .textshadow {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
-
 .cardMiniProfile {
   width: 90%;
   height: 50vh;
   box-shadow: $boxshadow;
 }
+.searchResult {
+  width: 300PX;
+}
+// .mainContainer {
+//   margin-top: 50px;
+// }

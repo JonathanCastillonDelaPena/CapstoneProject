@@ -8,17 +8,17 @@ const PageLogin = () => {
         <div className="pageLogInContainer d-lg-flex">
             <div className="containerLogIn container w-100 d-flex justify-content-center align-items-center">
                 <div>
-                    <h1 className="display-1 text-center text-white">Welcome</h1>
+                    <h1 className="display-1 text-center textshadow color-primary font500">KODEBOOK</h1>
+                    <h6 className="display-6 text-center color-primary">Connect with like-minded people</h6>
                 <FormLogIn></FormLogIn>
                 </div>
             </div>
 
-            <div className="containerSignUp container w-50 d-flex flex-column align-items-center justify-content-center">
+            {/* <div className="containerSignUp container w-50 d-flex flex-column align-items-center justify-content-center">
                 <h1 className="display-1">KodeBook</h1>
                 <h6 className="display-6 text-center">Connect with like-minded people</h6>
-                <Link to="/register" className="btn btn-SignUp mx-1">SIGN UP</Link>
                 <h6 className="text-center mt-5">Geared towards bringing together people with shared interests or hobbies</h6>
-            </div>
+            </div> */}
         </div>
     );
 };

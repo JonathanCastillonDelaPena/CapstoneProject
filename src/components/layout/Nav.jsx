@@ -11,16 +11,15 @@ const Nav = ({ props, resultState }) => {
   return (
     <header className="pt-1 fixed-top navbarC border">
       <div className="container">
-        <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <div className="d-md-flex flex-wrap align-items-center justify-content-md-center justify-content-lg-start">
           {/* LOGO */}
-            <img className='kodeBook-logo d-none d-sm-block' src="https://res.cloudinary.com/dbjikdtuj/image/upload/v1679567851/Capstone/Posts/ypqhckgmerrrmgypxoye.png" alt="" />
+            <img className='kodeBook-logo d-none d-lg-block' src="https://res.cloudinary.com/dbjikdtuj/image/upload/v1679567851/Capstone/Posts/ypqhckgmerrrmgypxoye.png" alt="" />
           {/* END LOGO */}
             <div className='nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0'>
                <SearchBox resultState={resultState}/>
             </div>
 
-            <ul className="ms-auto mb-2 mb-lg-0">
-
+            <ul className="ms-auto mb-2 mb-lg-0 mt-md-2">
                 {/* Create POST */}
                   <button className='btnC btn-highlight me-2' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   <i className="bi bi-large bi-color bi-plus-circle-fill"></i>

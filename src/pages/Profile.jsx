@@ -210,9 +210,11 @@ const Profile = () => {
     });
   }
 
+  const [results, setResults] = useState([]);
+
     return(
        <div className="header_wrapper container">
-        <Nav props={{ ...currentUser, setSubmittedPost }} />
+        <Nav resultState={{results, setResults}} props={{ ...currentUser, setSubmittedPost }}  />
         <ModalPost props={{ ...currentUser, setSubmittedPost }} />
     {/* Cover Photo */}
         <header className="mt-5 container">
