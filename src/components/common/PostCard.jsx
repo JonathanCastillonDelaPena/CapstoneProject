@@ -60,12 +60,48 @@ const PostCard = ({ props }) => {
     getCommentCount();
   },[props.post.post_id]);
 
+
+  // const createdDate = new Date(props.post.created_at);
+  //   const formattedDate = createdDate.toLocaleDateString("en-US", {
+  //     year: "numeric",
+  //     month: "long",
+  //     day: "numeric",
+  //   });
+  const createdDate = new Date(props.post.created_at);
+const currentDate = new Date();
+const diffInMs = currentDate.getTime() - createdDate.getTime();
+const diffInDays = Math.round(diffInMs / (1000 * 60 * 60 * 24));
+
+let message = "";
+if (diffInDays === 0) {
+  // Less than 24 hours ago
+  const hours = createdDate.getHours();
+  const minutes = createdDate.getMinutes().toString().padStart(2, "0");
+  const ampm = hours >= 12 ? "pm" : "am";
+  const formattedTime = `${(hours % 12) || 12}:${minutes} ${ampm}`;
+  message = `posted today at ${formattedTime}`;
+} else if (diffInDays === 1) {
+  // Yesterday
+  const hours = createdDate.getHours();
+  const minutes = createdDate.getMinutes().toString().padStart(2, "0");
+  const ampm = hours >= 12 ? "pm" : "am";
+  const formattedTime = `${(hours % 12) || 12}:${minutes} ${ampm}`;
+  message = `posted yesterday at ${formattedTime}`;
+} else {
+  // More than 1 day ago
+  message = `posted ${diffInDays} days ago`;
+}
+
   return (
     <div className="card m-2" ref={props.ref} id={props.post.post_id}>
-      
       <div className="card-body">
-        <h4 className="card-title">{postUser.first_name} {postUser.last_name}</h4>
-        <h2 className="card-title">{props.post.title}</h2>
+        <div className="d-flex">
+          <img className="miniProfile" src={postUser.image_url} alt="" />
+          <div className="ms-2 mt-2 mb-5">
+            <span className="font900">{postUser.first_name} {postUser.last_name}</span>
+            <span className="text-muted"> {message}</span>
+          </div>
+        </div>
 
         <div className="card-text">
           <p>{props.post.content}</p>

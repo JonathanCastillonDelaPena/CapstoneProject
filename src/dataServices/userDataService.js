@@ -20,5 +20,7 @@ const getDetailsByPost = async (data) => {
     });
   };
 
+
+
 const UserDataService = { getDetails, getDetailsByPost };
 export default UserDataService;

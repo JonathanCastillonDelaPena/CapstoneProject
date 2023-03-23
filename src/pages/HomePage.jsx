@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
-import useLoadPosts from "../components/customHooks/useLoadPosts";
+
 
 // import Component
 import PostCard from "../components/common/PostCard";
@@ -12,6 +12,7 @@ import "../assets/style/global.scss";
 import CardProfileMini from "../components/common/CardProfileMini";
 import Footer from "../components/layout/Footer";
 import ModalPost from "../components/layout/ModalPost";
+import useLoadPosts from "../components/customHooks/useLoadPosts";
 // import CardStory from "../components/common/cardStories";
 
 import { Cookies } from "react-cookie";
