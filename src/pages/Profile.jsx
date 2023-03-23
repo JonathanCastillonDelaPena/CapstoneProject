@@ -4,13 +4,13 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 // IMPORT
 import "../assets/style/global.css";
+import axios from "axios";
 import Nav from "../components/layout/Nav";
 import ModalPost from "../components/layout/ModalPost";
 import PostCard from "../components/common/PostCard";
 import PostForm from "../components/common/PostForm";
 import PostDataService from "../dataServices/postDataService";
 import UserDataService from "../dataServices/userDataService";
-import useLoadPostsByUser from "../components/customHooks/useLoadPostsByUser";
 import { CardProfile } from "../components/common/CardProfile";
 import { Cookies } from "react-cookie";
 const cookies = new Cookies();
@@ -18,11 +18,96 @@ const cookies = new Cookies();
 // END IMPORT
 
 const Profile = () => {
-  const [submittedPost, setSubmittedPost] = useState(false);
+  //#region
 
-  // The data of the current user.
+  // const [submittedPost, setSubmittedPost] = useState(false);
+  // const [results, setResults] = useState([]);
+
+  // // The data of the current user.
+  // const { username } = cookies.get("_auth_state");
+  // const [currentUser, setCurrentUser] = useState({});
+
+  // const [lastFetchedRecord, setLastFetchedRecord] = useState(0);
+  // const [limit, setLimit] = useState(5);
+  // // const { _posts, hasMore, loading, error, setPosts } = useLoadPostsByUser(
+  // //   limit,
+  // //   lastFetchedRecord,
+  // //   currentUser
+  // // );
+
+  // const observer = useRef();
+
+  // const getCurrentUser = async () => {
+  //   await UserDataService.getDetails({ username: username })
+  //     .then((response) => {
+  //       const userArr = response.data;
+  //       setCurrentUser(userArr[0]);
+  //     })
+  //     .catch((err) => {
+  //       console.log(`\nError retrieving current user from database.`);
+  //       console.log(err);
+  //     });
+  // };
+
+  // const getLatestPost = async () => {
+  //   await PostDataService.getLatestByUser(currentUser.user_id)
+  //     .then((response) => {
+  //       const postArr = response.data;
+  //       setLastFetchedRecord(postArr[0].post_id);
+  //       setSubmittedPost(false);
+  //       // console.log(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(`\nError retrieving latest post from database.`);
+  //       console.log(err);
+  //     });
+  // };
+
+  // const lastPostElementRef = useCallback(
+  //   (node) => {
+  //     if (loading) return;
+  //     if (observer.current) observer.current.disconnect();
+
+  //     observer.current = new IntersectionObserver((entries) => {
+  //       if (entries[0].isIntersecting) {
+  //         // console.log("visible");
+  //         // console.log(node);
+  //         setLastFetchedRecord(node.id - 1);
+  //       }
+  //     });
+
+  //     if (node) observer.current.observe(node);
+  //   },
+  //   [loading]
+  // );
+
+  // useEffect(() => {
+  //   if (submittedPost) {
+  //     setPosts([]);
+  //   }
+  //   getLatestPost();
+  // }, [submittedPost]);
+
+  // useEffect(() => {
+  //   if (lastFetchedRecord === 0) return;
+
+  //   getLatestPost();
+  // },[currentUser]);
+
+  // useEffect(() => {
+  //   getCurrentUser();
+  // }, []);
+
+  //#endregion
+
+  const [posts, setPosts] = useState([]);
+  const [results, setResults] = useState([]); // For searching of user by Name.
+  const [currentUser, setCurrentUser] = useState({});
+  const [submittedPost, setSubmittedPost] = useState(false);
   const { username } = cookies.get("_auth_state");
-  const [currentUser, setCurrentUser] = useState({user_id: 27});
+  const [lastFetchedRecord, setLastFetchedRecord] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const limit = 5;
 
   const getCurrentUser = async () => {
     await UserDataService.getDetails({ username: username })
@@ -35,18 +120,6 @@ const Profile = () => {
         console.log(err);
       });
   };
-
-  useEffect(() => {
-    getCurrentUser();
-  }, []);
-
-  const [lastFetchedRecord, setLastFetchedRecord] = useState(0);
-  const [limit, setLimit] = useState(5);
-  const { _posts, hasMore, loading, error, setPosts } = useLoadPostsByUser(
-    limit,
-    lastFetchedRecord,
-    currentUser.user_id
-  );
 
   const observer = useRef();
   const lastPostElementRef = useCallback(
@@ -67,13 +140,53 @@ const Profile = () => {
     [loading]
   );
 
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
+  useEffect(() => {
+    if (submittedPost) {
+      setPosts([]);
+    }
+    // getLatestPost();
+  }, [submittedPost]);
+
+  useEffect(() => {
+    if (currentUser?.user_id === undefined || lastFetchedRecord === 0) {
+      setPosts([]);
+    } else {
+      setLoading(true);
+      let cancel;
+
+      PostDataService.getAllPaginatedByUser(
+        limit,
+        lastFetchedRecord,
+        currentUser?.user_id,
+        new axios.CancelToken((c) => (cancel = c))
+      )
+        .then((response) => {
+          setPosts((prevPosts) => {
+            return [...prevPosts, ...response.data];
+          });
+          setLoading(false);
+        })
+        .catch((error) => {
+          if (axios.isCancel(error)) return;
+        });
+        return () => cancel();
+    }
+  }, [lastFetchedRecord]);
+
   const getLatestPost = async () => {
-    await PostDataService.getLatestByUser(currentUser.user_id)
+    await PostDataService.getLatest()
       .then((response) => {
         const postArr = response.data;
-        setLastFetchedRecord(postArr[0].post_id);
-        setSubmittedPost(false);
-        // console.log(response.data);
+        if (postArr[0]?.post_id === undefined) {
+          setLastFetchedRecord(0);
+        } else {
+          setLastFetchedRecord(postArr[0].post_id);
+          setSubmittedPost(false);
+        }
       })
       .catch((err) => {
         console.log(`\nError retrieving latest post from database.`);
@@ -89,9 +202,9 @@ const Profile = () => {
   }, [submittedPost]);
 
   let displayPosts = <></>;
-  if (_posts.length !== 0) {
-    displayPosts = _posts.map((post, index) => {
-      if (_posts.length === index + 1) {
+  if (posts.length !== 0) {
+    displayPosts = posts.map((post, index) => {
+      if (posts.length === index + 1) {
         return (
           <PostCard
             props={{
@@ -112,8 +225,6 @@ const Profile = () => {
       }
     });
   }
-
-  const [results, setResults] = useState([]);
 
   return (
     <div className="header_wrapper container">
