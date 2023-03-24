@@ -111,19 +111,20 @@ const ModalPost = ({ props }) => {
 {/* ImageSelector */}
             <div className="container d-flex align-items-center mt-1">
               
-            <button type="submit" className="btn btn-success ms-auto">
-              Post!
-            </button>
+              <button type="submit" className="btn btn-primary ms-auto me-2">
+                Post!
+              </button>
+              
+              <button type="button" className="btn btn-danger" data-bs-dismiss="modal">
+                Close
+              </button>
             </div>
-            {/* <MediaUploadWidget /> */}
             </div>
           </form>
 
 
       </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
+     
     </div>
   </div>
 </div>

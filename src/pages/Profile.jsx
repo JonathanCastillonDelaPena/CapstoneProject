@@ -213,13 +213,13 @@ const Profile = () => {
   const [results, setResults] = useState([]);
 
     return(
-       <div className="header_wrapper container">
+       <div className="header_wrapper">
         <Nav resultState={{results, setResults}} props={{ ...currentUser, setSubmittedPost }}  />
         <ModalPost props={{ ...currentUser, setSubmittedPost }} />
     {/* Cover Photo */}
         <header className="mt-5 container">
             <img src="https://www.denofgeek.com/wp-content/uploads/2020/07/One-Piece-Full-Cast-Header-Image.jpg?fit=2560%2C1440" className="bg"/></header>
-        <div className="cols-container d-md-flex">
+        <div className="cols-container d-lg-flex">
     {/* CArdProfile */}
             <CardProfile props={{ ...currentUser, setSubmittedPost }} />
 
