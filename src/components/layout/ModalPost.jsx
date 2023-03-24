@@ -148,7 +148,7 @@ const ModalPost = ({ props }) => {
                 </div>
                 {/* ImageSelector */}
                 <div className="container d-flex align-items-center mt-1">
-                  <button type="submit" className="btn btn-success ms-auto">
+                  <button type="submit" className="btn btn-primary ms-auto me-2">
                     Post!
                   </button>
                 </div>

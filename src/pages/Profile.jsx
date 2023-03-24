@@ -147,7 +147,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="header_wrapper container">
+    <div className="header_wrapper">
       <Nav
         resultState={{ results, setResults }}
         props={{ ...currentUser, setSubmittedPost }}
@@ -161,7 +161,7 @@ const Profile = () => {
           className="bg"
         />
       </header>
-      <div className="cols-container d-md-flex">
+      <div className="cols-container d-lg-flex">
         {/* CArdProfile */}
         <CardProfile props={{ ...currentUser, setSubmittedPost }} />
 

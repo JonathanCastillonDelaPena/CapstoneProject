@@ -19,7 +19,7 @@ const Nav = ({ props, resultState }) => {
                <SearchBox resultState={resultState}/>
             </div>
 
-            <ul className="ms-auto mb-2 mb-lg-0 mt-md-2">
+            <ul className="ms-auto mb-2 mb-lg-0 mt-md-0">
                 {/* Create POST */}
                   <button className='btnC btn-highlight me-2' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   <i className="bi bi-large bi-color bi-plus-circle-fill"></i>
