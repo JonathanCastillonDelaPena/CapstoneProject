@@ -14,16 +14,31 @@ const RoutesController = () => {
   return (
     <Routes>
       <Route path="/" element={<PageLogin />} />
-      <Route path="/home"
+      <Route
+        path="/home"
         element={
           <RequireAuth loginPath={"/"}>
             <HomePage />
           </RequireAuth>
         }
       />
-      <Route path="/changeEmail" element={<ChangeEmail />} />
+      <Route
+        path="/profile"
+        element={
+          <RequireAuth loginPath={"/"}>
+            <Profile />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/changeemail"
+        element={
+          <RequireAuth loginPath={"/"}>
+            <ChangeEmail />
+          </RequireAuth>
+        }
+      />
       <Route path="/register" element={<PageSignup />} />
-      <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<NotFoundWarningPage />} />
     </Routes>
   );
