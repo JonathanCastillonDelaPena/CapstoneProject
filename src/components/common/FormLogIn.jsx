@@ -48,7 +48,6 @@ const FormLogIn = () => {
             // "https://capstone.tristanviernes.com/login",
             values
           );
-          console.log(response.status);
           toast.success("Login Successful, Redirecting to Home", {
             position: "top-left",
             autoClose: 4500,
