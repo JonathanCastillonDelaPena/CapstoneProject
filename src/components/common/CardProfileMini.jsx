@@ -9,7 +9,7 @@ function CardProfileMini({ props }) {
         <div className='mt-5 d-flex flex-column justify-content-center align-items-center w-100'>
             <h5 className='textshadow '>{props.first_name} {props.last_name}</h5>
 
-            <Link to={`/profile/${props.user_id}`} className='btn btn-primary'>
+            <Link to={`/profile`} className='btn btn-primary'>
               View Profile
             </Link>
 
